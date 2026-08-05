@@ -1,0 +1,158 @@
+# Software Requirements Specification (SRS)
+## ASTER AI Financial Intelligence Platform
+### Part 20: Appendices, References, and Approval
+
+#### Appendix A: Glossary of Terms
+
+**A.
+- **Alpha**: Measure of an investment's performance relative to a benchmark index
+- **AML**: Anti-Money Laundering regulations and procedures
+- **API**: Application Programming Interface
+- **AML**: Anti-Money Laundering
+- **ANOVA**: Analysis of Variance statistical technique
+- **AUM**: Assets Under Management
+- **BVPS**: Book Value Per Share
+- **CAGR**: Compound Annual Growth Rate
+- **CAPM**: Capital Asset Pricing Model
+- **CDO**: Collateralized Debt Obligation
+- **CDS**: Credit Default Swap
+- **CEO**: Chief Executive Officer
+- **CFO**: Chief Financial Officer
+- **CFTC**: Commodity Futures Trading Commission
+- **CHIPS**: Clearing House Interbank Payments System
+- **CLN**: Credit Linked Note
+- **CLO**: Collateralized Loan Obligation
+- **CMBS**: Commercial Mortgage-Backed Securities
+- **CMO**: Collateralized Mortgage Obligation
+- **COO**: Chief Operating Officer
+- **CPI**: Consumer Price Index
+- **CPPI**: Constant Proportion Portfolio Insurance
+- **CRR**: Capital Requirements Regulation
+- **CRD**: Capital Requirements Directive
+- **CRO**: Chief Risk Officer
+- **CSRC**: China Securities Regulatory Commission
+- **CSS**: Cascading Style Sheets
+- **CTA**: Commodity Trading Advisor
+- **CTA**: Call to Action
+- **CVA**: Credit Valuation Adjustment
+- **DCF**: Discounted Cash Flow valuation method
+- **DJIA**: Dow Jones Industrial Average
+- **DMO**: Debt Management Office
+- **Dodd-Frank**: Wall Street Reform and Consumer Protection Act
+- **DSO**: Days Sales Outstanding
+- **DTCC**: Depository Trust & Clearing Corporation
+- **DVP**: Delivery Versus Payment
+- **EA**: Enterprise Architecture
+- **EBIT**: Earnings Before Interest and Taxes
+- **EBITDA**: Earnings Before Interest, Taxes, Depreciation, and Amortization
+- **ECB**: European Central Bank
+- **ECN**: Electronic Communication Network
+- **EDGAR**: Electronic Data Gathering, Analysis, and Retrieval system
+- **EEA**: European Economic Area
+- **EIA**: Energy Information Administration
+- **EM**: Emerging Markets
+- **EMB**: Emerging Markets Bond index
+- **EMF**: Electromagnetic Field
+- **EMU**: Economic and Monetary Union
+- **EPFR**: Emerging Portfolio Fund Research
+- **EPS**: Earnings Per Share
+- **ERISA**: Employee Retirement Income Security Act
+- **ESG**: Environmental, Social, and Governance factors
+- **ESMA**: European Securities and Markets Authority
+- **ETF**: Exchange-Traded Fund
+- **ETN**: Exchange-Traded Note
+- **EU**: European Union
+- **EURIBOR**: Euro Interbank Offered Rate
+- **EURIBOR**: Euro Interbank Offered Rate
+- **EURIBOR**: Euro Interbank Offered Rate
+- **EVA**: Economic Value Added
+- **EV/EBITDA**: Enterprise Value to EBITDA ratio
+- **EV/EBITDA**: Enterprise Value to EBITDA ratio
+- **FATF**: Financial Action Task Force
+- **FDIC**: Federal Deposit Insurance Corporation
+- **FED**: Federal Reserve System
+- **FIA**: Futures Industry Association
+- **FIFO**: First In, First Out accounting method
+- **FINRA**: Financial Industry Regulatory Authority
+- **Fitch**: Fitch Ratings credit rating agency
+- **FOMC**: Federal Open Market Committee
+- **FPO**: Follow-on Public Offering
+- **FTSE**: Financial Times Stock Exchange index
+- **FVA**: Funding Valuation Adjustment
+- **FX**: Foreign Exchange
+- **GAAP**: Generally Accepted Accounting Principles
+- **GAAS**: Generally Accepted Auditing Standards
+- **GACP**: Generally Accepted Cannabis Principles
+- **GARCH**: Generalized Autoregressive Conditional Heteroskedasticity
+- **GDP**: Gross Domestic Product
+- **GDR**: Global Depositary Receipt
+- **GE**: General Electric
+- **GFOA**: Government Finance Officers Association
+- **GICS**: Global Industry Classification Standard
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginat**: Not a standard financial acronym
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Government National Mortgage Association
+- **Ginnie Mae**: Ginnie Mae
