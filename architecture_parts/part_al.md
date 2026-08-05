@@ -1,0 +1,5 @@
+- **Company Financials**: Statements, ratios, metrics, filings
+- **Portfolio & Position Data**: Holdings, transactions, performance
+- **User & Collaboration Data**: Models, comments, annotations, preferences
+- **Analytics & Model Data**: Calculations, scenarios, valuations, forecasts
+- **Audit & Compliance Data**: Access logs, changes, compliance reports

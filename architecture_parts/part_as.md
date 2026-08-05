@@ -1,0 +1,4 @@
+- **Identity & FedRAMP**: MFA, SSO, identity federation, privileged access management
+- **Application Security**: Input validation, output encoding, secure headers
+- **Data Security**: Encryption at rest and in transit, tokenization, key management
+- **Application Security**: Regular penetration testing, vulnerability scanning, WAF
