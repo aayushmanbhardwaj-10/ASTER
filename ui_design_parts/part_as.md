@@ -1,0 +1,86 @@
+  - Disguised ads: Editorial content that's actually promotion
+  - Roach motel: Easy to enter, hard to leave/delete
+  - Confirmshaming: "No thanks, I prefer to miss out"
+- **Performance Anti-Patterns**:
+  - Synchronous layout: Forced reflows in loops
+  - Giant DOM: 10k+ nodes without virtualization
+  - Long-running JS: Blocking main thread >50ms
+  - Image overdelivery: 4K phone wallpaper on 320px screen
+  - Font bloat: Multiple weights when 1-2 would suffice
+- **Accessibility Anti-Patterns**:
+  - Color-only meaning: Required fields = red text
+  - Missing labels: Placeholder as sole label
+  - Trap focus: Modal that can't be tabbed out of
+  - Inadequate contrast: Gray text on white background
+  - Arbitrary tabindex: Disrupting natural tab order
+- **Usability Anti-Patterns**:
+  - Mystery meat navigation: Icon-only unlabeled controls
+  - Modal overload: Interrupting flow for minor confirmations
+  - Hierarchical spam: 6-level deep menus
+  - Orphaned pages: No way to reach from main navigation
+  - Inconsistent metaphor: Same icon means different things
+- **Maintainability Anti-Patterns**:
+  - Smoke and mirrors: Temporary fixes that become permanent
+  - Golden hammer: Forcing one solution everywhere
+  - Boat anchor: Dead code/features nobody uses
+  - Spaghetti dependencies: Circular/tight coupling
+  - Priesthood: Only 1-2 people understand critical system
+
+## 20. Future Directions and Emerging Trends
+
+### 20.1 Evolving Design Systems
+- **Design Tokens 2.0**:
+  - Thematic tokens: Context-aware (dark/light, high contrast)
+  - Component tokens: Specific to button/badge rather than global
+  - Alias chains: semantic → state → base → raw value
+  - Dynamic tokens: Value based on viewport/user prefs
+  - Framework agnostic: Pure JSON, language agnostic consumption
+- **Advanced Component APIs**:
+  - Slot-based composition: Flexible children placement
+  - Render props: For maximum flexibility in rendering
+  - Hooks-based: React-specific but powerful composition
+  - Headless/UI-separation: Logic separate from presentation
+  - Configurable: Props-driven rather than subclassing
+- **Smart Components**:
+  - Context-aware: Adapt based on user role, location, time
+  - Predictive loading: Fetch likely next data
+  - Self-optimizing: Adjust quality based on device/network
+  - Accessibility-first: Built-in accommodations
+  - Analytics-aware: Auto-track usage/interactions
+- **Design System as Platform**:
+  - Plugin architecture: Extend without forking
+  - Theme marketplace: Community/shared variations
+  - Versioned API: Stable contract for consumers
+  - Feature flags: Gradual rollout/deactivation
+  - Telemetry: Usage/performance data for evolution
+
+### 20.2 AI/ML in Design
+- **Generative Design Assistance**:
+  - Layout suggestions: Based on content and constraints
+  - Color palette generation: From brand image or mood
+  - Component variations: Auto-generate state combinations
+  - Copywriting assist: Tone adjustment, length variation
+  - Accessibility review: Automatic contrast/structure checks
+- **Personalization Engines**:
+  - Interface adaptation: Based on usage patterns, skill level
+  - Feature surfacing: Show relevant tools hide advanced
+  - Content prioritization: What user likely needs next
+  - Navigation prediction: Pre-load next likely view
+  - Density adjustment: Compact for experts, spacious for novices
+- **Design QA and Testing**:
+  - Visual regression: ML to distinguish acceptable vs bad changes
+  - Usability prediction: Eye-tracking simulation models
+  - Accessibility scanning: Deeper than rule-based (context)
+  - Performance forecasting: Impact estimate before implementation
+  - A/B test automation: Smart traffic allocation
+- **Conversational Interfaces**:
+  - Voice navigation: "Show me my portfolio performance"
+  - Natural language filtering: "Tech stocks under $100 with dividend"
+  - Guidance system: "To analyze AAPL, first select timeframe..."
+  - Feedback collection: Natural exit interviews
+  - Error recovery: "It looks like you're trying to..., did you mean?"
+- **Design Operations (DesignOps)**:
+  - Resource allocation: Predict designer needs from roadmap
+  - Skill matching: Assign work based on expertise/capacity
+  - Workflow optimization: Identify bottlenecks in design process
+  - Impact measurement: Quantify design's effect on business KPIs

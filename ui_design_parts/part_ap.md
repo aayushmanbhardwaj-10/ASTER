@@ -1,0 +1,96 @@
+  - User testing: Preference studies for duration/easing
+  - Accessibility: Manual test with reduced motion enabled
+
+## 18. Design System Components deep dive
+
+### 18.1 Foundational Elements
+- **Box Primitive**:
+  - Props: p, m, width, height, minWidth, maxWidth, display, flex
+  - Responsive: Array/object syntax for breakpoints
+  - As: Polymorphic element (div, section, article, etc.)
+  - sx prop: Style object for overrides (escape hatch)
+  - Theme access: Uses design tokens via theme context
+- **Text Primitive**:
+  - Variants: paragraph, label, caption, overline
+  - Color: inherits, textPrimary, textSecondary, disabled
+  - Align: start, center, end, justify
+  - Truncate: ellipsis with tooltip on hover
+  - No-wrap: Prevents wrapping with ellipsis fallback
+- **Spacing System**:
+  - Margin/padding shorthand: m={2} = 8px, mx={2} = horizontal 8px
+  - Negative values: Supported for pull effects
+  - Auto: For flex centering (marginX="auto")
+  - Inherit: Explicit inherit value when needed
+- **Border and Radius**:
+  - Border: width, style, color (top/right/bottom/left variants)
+  - Radius: uniform (r=2) or specific (rt=2, rb=4)
+  - BorderColor: Inherits from currentColor by default
+  - Outline: For focus states (separate from border)
+- **Shadow and Elevation**:
+  - Levels: 0-5 (none to prominent)
+  - Values: Precise offsets, blur, spread, opacity
+  - Contextual: Based on depth in z-index hierarchy
+  - Animation: Transition when elevation changes
+
+### 18.2 Interactive Components
+- **Button Variants**:
+  - Contained: Fill background (primary action)
+  - Outline: Border only (secondary action)
+  - Text: Text only (minimal emphasis)
+  - Icon: Icon only (no label, aria-label required)
+  - Link: Styled as navigating anchor
+  - Sizes: xs (24px), sm (32px), md (40px), lg (48px)
+  - Loading: Spinner replaces text, disabled state
+  - Icons: Leading/trailing, spaced appropriately
+  - Full-width: 100% container width
+- **Input Family**:
+  - TextInput: Single line, optional clear button
+  - TextArea: Autosize, min/max rows, resize handle
+  - SearchInput: Magnifying glass, clear, voice input button
+  - PasswordInput: Toggle visibility, strength meter
+  - NumberInput: Step control, min/max, precision
+  - DateInput: Native picker or custom calendar
+  - SelectInput: Searchable, creatable, label/value separation
+- **Selection Controls**:
+  - Checkbox: Independent toggles, indeterminate state
+  - Radio: Mutually exclusive within group
+  - Switch: Binary state, smoother animation than checkbox
+  - ToggleButtonGroup: Mutually exclusive button set
+  - SegmentedControl: iOS-style tab alternative
+- **Data Display**:
+  - Badge: Status indicator, counter, dot
+  - Avatar: Image/initials/fallback, size, shape (circle/square)
+  - Chip: Compact input/categorization (removable, clickable)
+  - Alert: Inline/message, dismissible, icon+supporting text
+  - Progress: Determinate/indeterminate, buffer variant
+  - Slider: Continuous/discrete, range, thumb label
+  - Switch: Binary toggle with optional label
+- **Navigation**:
+  - Tabs: Horizontal/vertical, scrollable, icon-only
+  - Breadcrumb: Path-based or hierarchy-based
+  - Pagination: Page links, prev/next, first/last
+  - Stepper: Linear flow with completed/active/upcoming
+  - Menu: Dropdown, context, dropdown-button
+  - Drawer: Permanent/temporary, persistent/slide-in
+- **Feedback Components**:
+  - Toast: ToastContainer provides positioning, limits duplicates
+  - Snackbar: Single line action, auto-dismiss (configurable)
+  - Dialog: Modal with backdrop, header/content/actions
+  - Popover: Non-blocking: Non-blocking anchor-attached (tooltip, menu, picker)
+  - Skeletons: Placeholders for text, buttons, avatars, images
+
+### 18.3 Layout Components
+- **Grid System**:
+  - Container: Centered, max-width, padding
+  - Row: Flex container, gutter, wrap/no-wrap
+  - Column: Span (1-12), offset, order, auto-layout
+  - Responsive: Object syntax {base: 6, sm: 8, md: 4}
+  - Flex: Direction, justify, align, gap, wrap
+- **Stack Layout**:
+  - Vertical/horizontal: Direction prop
+  - Spacing: Consistent gap between children
+  - Divider: Optional line between children
+  - Wrap: When container too narrow, wrap to next line
+- **Table Features**:
+  - Header: Sortable, filterable, column menu
+  - Body: Selectable, expandable rows, hover/highlight

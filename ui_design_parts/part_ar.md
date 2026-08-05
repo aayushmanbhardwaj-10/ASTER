@@ -1,0 +1,94 @@
+  - Keyboard navigation: Logical tab order, accesskeys
+  - Right-click context: Advanced options
+  - Drag and drop: For reordering, attaching
+  - Bulk operations: Select multiple, apply action
+
+### 19.3 Data Presentation Patterns
+- **Effective Patterns**:
+  - Progressive disclosure: Summary → detail on demand
+  - Consistent alignment: Numbers right, text left
+  - Comparative context: Benchmarks, goals, historical
+  - Annotation layer: Notes, flags, explanation overlays
+  - Export options: Multiple formats, configurable fields
+- **Ineffective Patterns**:
+  - Precision overuse: Showing 8 decimals when 2 matters
+  - Chart junk: Excessive gridlines, 3d effects, unnecessary decoration
+  - Data drowning: No summary, just raw data dump
+  - Misleading axes: Not zero-based when inappropriate
+  - Cherry picking: Selective time ranges to support narrative
+- **Comparison Techniques**:
+  - Side-by-side: Direct visual comparison
+  - Overlay: Transparency for showing overlap
+  - Small multiples: Same scale, different categories
+  - Bullet graph: Performance against target/ranges
+  - Sparkline: Trend context in tables
+- **Hierarchical Data**:
+  - Tree views: Expand/corrow, selection persistence
+  - Sunburst/Icicle: Angular/rectangular hierarchy views
+  - Indentation: Depth indicated by space (em per level)
+  - Breadcrumbs: Show path in hierarchy
+  - Selection: Support for leaf/node/ranges selection
+- **Temporal Data**:
+  - Timeline: Horizontal scrolling or vertical bands
+  - Gantt: Duration visualization with dependencies
+  - Heatmap: Calendar view for activity frequency
+  - Waterfall: Sequential contribution to total
+  - Forecast cone: Uncertainty increase over time
+
+### 19.4 Interaction and Feedback Patterns
+- **Effective Patterns**:
+  - Immediate feedback: Visual/audio for every action
+  - Predictive: Show outcome before commit (hover preview)
+  - Reversible: Undo available for meaningful actions
+  - Preventive: Disable invalid actions with explanation
+  - Confirmatory: For destructive/high-cost actions
+- **Ineffective Patterns**:
+  - Silent failure: No indication action was received
+  - Mode errors: Actions do different things in hidden state
+  - Fat finger trouble: Undersized touch targets
+  - Modal overload: Interrupting flow for minor things
+  - Incomplete state: Partially applied changes visible
+- **Onboarding Patterns**:
+  - Progressive: Show more as user demonstrates competence
+  - Contextual: Tips appear when relevant feature encountered
+  - Sandbox: Safe environment to experiment
+  - Templates: Start from example rather than blank
+  - Goals: User-defined objectives with progress tracking
+- **Error Handling**:
+  - Prevent: Constrain inputs to valid range
+  - Intercept: Confirm before dangerous action
+  - Mitigate: Undo, autosave, version history
+  - Inform: Clear explanation + recovery path
+  - Follow-up: Check if issue resolved later
+- **Social/Collaborative**:
+  - Awareness: See who's viewing/editing same item
+  - Notification: In-app + email preferences
+  - Permission: Clear visibility/edit rights indicators
+  - History: Who changed what when with diff
+  - Resolution: Comment threads, @mentions, decision logs
+
+### 19.5 Mobile-Specific Patterns
+- **Effective Patterns**:
+  - Thumb-zone optimization: Primary actions bottom-center
+  - Consistent back: Hardware gesture or predictable UI
+  - App indexing: Deep linking from search/WEB
+  - Offline-first: Queue actions, sync when connected
+  - Gesture consistency: Swipe patterns match platform
+- **Ineffective Patterns**:
+  - Hamburger overuse: For primary nav when tab bar better
+  - Modal traps: No way to dismiss without action
+  - Tiny targets: Icons/text too small for fingers
+  - Desktop port: Ignoring touch framework differences
+  - Orientation lock: Forcing portrait when landscape better
+- **Tablet Considerations**:
+  - Split screen: Primary/secondary pane layouts
+  - Keyboard shortcuts
+  - Adaptive columns: 1→2→3 column based on width
+  - Palm rejection: Ignore input near edges when stylus used
+  - Continuous experience: Seamless phone→tablet→desktop
+
+### 19.6 Anti-Patterns to Avoid
+- **Dark Patterns**:
+  - Bait and switch: Advertise one thing, deliver another
+  - Hidden costs: Reveal fees late in process
+  - Forced continuity: Free trial to paid without clear opt-out

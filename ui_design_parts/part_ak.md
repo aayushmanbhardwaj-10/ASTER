@@ -1,0 +1,78 @@
+- **Date and Time**:
+  - Format: Locale-specific (MM/DD/YYYY, DD/MM/YYYY, YYYY-MM-DD)
+  - Calendar: Gregorian default, alternatives available (Hijri, Buddhist)
+  - Timezone: User-selectable with display of offset (EST, UTC+5:30)
+  - Relative time: "5 minutes ago" adapted to language rules
+  - Fiscal year: July-June (Australia), April-March (India) options
+- **Numbers and Currency**:
+  - Decimal separator: . (US) vs , (EU) vs · (some regions)
+  - Thousands separator: , (US) vs . (EU) vs space (SI/Metric)
+  - Currency symbol: Position (prefix $10 vs suffix 10€) and spacing
+  - Decimal places: Standard precision per currency (JPY: 0, BHD: 3)
+  - Numerals: Western (0-9) vs Eastern Arabic (٠-٩) vs Devanagari (०-९)
+- **Measurement Units**:
+  - System: Metric default, US/Imperial for specific locales
+  - Conversion: Optional display of both units
+  - Formatting: Proper abbreviations (km vs km, lb vs lb)
+- **Text Expansion and Contraction**:
+  - Design accommodation: Up to 40% longer text (German, Finnish)
+  - Truncation strategy: End-ellipsis with tooltip on hover
+  - Vertical stacking: Icons+text → vertical when horizontal insufficient
+  - Abbreviation: Approved short forms when essential (Info → Inf)
+- **Sorting and Collation**:
+  - Locale-aware: Correct ordering for accented characters
+  - Ignore articles: "The" in titles for sorting (but display retained)
+  - Custom rules: For financial instruments (ticker symbols first)
+  - Search: Diacritic-insensitive unless language requires sensitivity
+
+### 14.3 Cultural Adaptation
+- **Color and Symbolism**:
+  - Research: Per-market color associations (red=luck in China, danger in West)
+  - Adaptation: Adjust emphasis colors while preserving semantics
+  - Icons: Avoid culturally specific gestures/things (thumbs up offensive in ME)
+  - Imagery: Local landmarks, people, scenarios in illustrations/examples
+- **Date and Calendar Systems**:
+  - Week start: Sunday (US) vs Monday (ISO/EU) vs Saturday (Middle East)
+  - Holidays: Market closures, observances shown in calendar views
+  - Fiscal periods: Country-specific tax years, reporting periods
+  - Era display: CE/BCE vs AD/BC based on locale preference
+- **Numerical Systems**:
+  - Western numerals: Default for international finance
+  - Local numerals: Option for domestic market display
+  - Mixed contexts: Transaction amounts in local, reporting in USD
+- **Layout and Reading Patterns**:
+  - F-pattern: Left-to-right cultures (top-left importance)
+  - Modified F: Right-to-left cultures (top-right importance)
+  - Gutenberg diagram: Adapted for column/reading direction
+  - Whitespace: Adjust density based on scanning patterns
+- **Legal and Compliance**:
+  - Terms of service: Jurisdiction-specific versions
+  - Privacy notices: GDPR for EU, CCPA for California, LGPD for Brazil
+  - Accessibility laws: EN 301 549 (EU), AODA (Canada), etc.
+  - Financial regs: Local disclosures, KYC/AML requirements per region
+
+### 14.4 Workflow and Tooling
+- **Translation Management**:
+  - String extraction: Automated from code/templates
+  - Context provision: Screenshots, usage notes for translators
+  - Workflow: Draft → Review → Approve → Publish
+  - Versioning: Track changes, detect outdated translations
+  - Machine translation: Pre-translate with human post-edit
+- **Quality Assurance**:
+  - Pseudolocalization: Test with accented/lengthened strings
+  - Functional testing: Verify layout, input, sorting in each language
+  - Linguistic review: Native speakers check accuracy/appropriateness
+  - Regression: Compare against previous version for unintended changes
+  - AZP (Auto-Zoom-Preview): Simulate various text lengths
+- **Developer Experience**:
+  - Pseudo-locale: Development mode with [brackets] and extra length
+  - Lint rules: Warn about hardcoded strings, concatenation
+  - Extraction verification: Ensure all strings marked for translation
+  - Missing string reporting: Runtime warnings in dev mode
+  - Context viewer: See string usage across application
+- **Release Process**:
+  - String freeze: Period before release for translation
+  - Staging deploy: Test with all languages enabled
+  - Monolingual smoke test: Verify base language still works
+  - Gradual rollout: Percentage of users per language
+  - Monitoring: Error rates, support tickets by language

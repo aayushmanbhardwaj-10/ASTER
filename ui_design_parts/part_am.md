@@ -1,0 +1,92 @@
+  - Test coverage: Unit/integration/e2e test percentages
+- **Velocity Metrics**:
+  - Onboard time: Hours for new contributor to make PR
+  - PR cycle time: From open to merge for DS changes
+  - Incident rate: Production issues originating from DS changes
+  - Documentation freshness: Average age of docs
+- **Business Impact**:
+  - Development speed: Feature delivery time pre/post DS
+  - Design consistency: User perception studies (SUS, NPS)
+  - Brand compliance: Audit score vs guidelines
+  - Support reduction: DS-related tickets vs total
+- **Feedback Mechanisms**:
+  - Numeric ratings: 1-5 on usefulness, ease of use
+  - Open feedback: Regular surveys, suggestion box
+  - Usage telemetry: Opt-in analytics on component adoption
+  - Community forum: Dedicated space for questions/sharing
+  - Annual survey: Comprehensive satisfaction assessment
+
+## 16. Design Tools and Workflow
+
+### 16.1 Figma Organization
+- **File Structure**:
+  - Foundations: Colors, typography, spacing, grids, icons
+  - Components: Button, Input, Card, Table, etc. (with variants)
+  - Templates: Page layouts, dashboard widgets, modal forms
+  - Pages: Explorations, handoff, archived versions
+  - Libraries: Shared across files via team library
+- **Component Design**:
+  - Variants: Property-based (state, size, color, disabled)
+  - Auto Layout: Responsive padding, spacing, wrapping
+  - Constraints: Fix to left/right/top/bottom, scale
+  - Text styles: Named styles with documentation
+  - Effects: Shadow, blur, noise (used sparingly)
+- **Documentation Pages**:
+  - Usage: When/how to use, dos and don'ts
+  - Variants: All combinations with explanations
+  - States: Default, hover, active, disabled, focus, loading
+  - Accessibility: Contrast ratios, keyboard navigation, screen reader notes
+  - Code snippet: HTML/CSS/JS/React/Vue/Svelte examples
+- **Plugins and Automation**:
+  - Tokens converter: Figma ↔ JSON design tokens
+  - Anima: Export to HTML/CSS/React
+  - Stark: Contrast checking, colorblind simulation
+  - Figmotion: Timelines for prototyping animations
+  - Custom: Batch rename, auto-layout converter, spacing auditor
+- **Library Management**:
+  - Versioning: Named releases with changelog
+  - Review process: PR-like system for proposed changes
+  - Deprecation: Visual indicator (gray overlay) on old components
+  - Analytics: Usage tracking (which components, how often)
+
+### 16.2 Prototyping and Testing
+- **Interactive Prototypes**:
+  - Flows: Core user journeys (login → dashboard → action)
+  - States: Multiple scenarios (empty, error, loading, success)
+  - Devices: Frames for mobile/tablet/desktop breakpoints
+  - Transitions: Smart animate for realistic microinteractions
+  - Testing: Shareable links with comment ability
+- **Design Testing**:
+  - Usability: Moderated/unmoderated remote testing
+  - Accessibility: Screen reader (VoiceOver, NVDA), keyboard only
+  - Performance: Frame timing in prototype mode
+  - Compatibility: Cross-browser (Chrome, Firefox, Safari, Edge)
+  - Environment: Different OS, zoom levels, contrast settings
+- **Design Systems Tools**:
+  - Storybook: Interactive component documentation
+  - Chromatic: Visual regression testing for storybook
+  - Figma to Storyboy: Bridge between design and code
+  -DSL (Design Systems Language): Shared vocabulary repo
+- **Design Tokens Sync**:
+  - Figma Variables: Native support for design tokens
+  - Token transformer: Figma ⇔ Style Dictionary ⇒ code
+  - Plugin: "Tokens Studio" for enhanced token management
+  - CI integration: Fail PR if figma tokens don't match repo
+- **Design Handoff**:
+  - Inspect panel: CSS/Swift/XML generation
+  - Annotations: Specs for spacing, typography, behavior
+  - Assets: Export as SVG, PNG, PDF @1x,2x,3x
+  - Version link: Specific figma version associated with PR
+  - Living docs: Storybook embedded in Figma via iframe
+
+### 16.3 Collaboration and Review
+- **Design Critique Framework**:
+  - Goals: What problem are we solving?
+  - Audience: Who is this for?
+  - Constraints: Technical, legal, time, brand
+  - Success metrics: How will we know it worked?
+  - Presentation: Show don't tell, focus on outcomes
+  - Feedback: I like, I wish, What if?
+- **Review Checklist**:
+  - Problem solving: Does it address the user need?
+  - Consistency: Matches existing patterns? Justifies deviations?

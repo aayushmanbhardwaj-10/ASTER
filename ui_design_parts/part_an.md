@@ -1,0 +1,87 @@
+  - Accessibility: Meets WCAG 2.1 AA at minimum
+  - Performance: Reasonable impact on load/runtime
+  - Scalability: Works with empty, single, many items
+  - Edge cases: Error states, long text, RTL, touch
+- **Feedback Tools**:
+  - In-context comments: Direct on frames/components
+  - Version history: Compare to previous iterations
+  - Approval workflow: "Ready for dev" status with required reviewers
+  - Design specs: Auto-generated from frames (Zeplin, Avocode)
+  - Design reviews: Regular sync with engineering/Product
+- **Design Debt Tracking**:
+  - Backlog: Known inconsistencies, accessibility issues
+  - Triage: Impact (user/business) × effort (fix)
+  - Resolution: Dedicated sprint time or eliminate in feature work
+  - Visibility: Dashboard showing debt reduction over time
+  - Prevention: Definition of Done includes design system compliance
+
+### 16.4 Handoff to Development
+- **Specification Methods**:
+  - Annotated screens: Redlines with measurements/typography
+  - Component specs: State tables, interaction descriptions
+  - Behavior docs: Animation timing, easing, sound (if any)
+  - Edge cases: Empty, error, loading, partial data scenarios
+  - Accessibility: ARIA roles, labels, keyboard flow
+- **Asset Export**:
+  - SVG: For icons, logos, illustrations (preferred)
+  - PNG/JPEG: For photos, complex gradients (with scales)
+  - PDF: For print materials, high-fidelity review
+  - Lottie: For complex animations (Airbnb library)
+- **Code Generation**:
+  - Design Tokens: CSS variables, SCSS maps, JS objects, Android/iOS
+  - Component Stubs: Basic React/Vue/Svelte/Angular skeletons
+  - Style Guides: Living documentation with code examples
+  - Caution: Treat as starting point, not final implementation
+- **Validation Process**:
+  - Visual testing: Applitools, Percy for regression detection
+  - Component testing: Jest + React Testing Library/Vue Test Utils
+  - Accessibility testing: axe-core, pa11y, manual screen check
+  - Performance testing: Lighthouse CI, WebPageTest integration
+  - Design diff: Figma image compare against implemented version
+- **Communication Channels**:
+  - Design-office hours: Regular drop-in for questions
+  - Change log: What's new in design system (dev-focused)
+  - Example apps: Reference implementations showing patterns
+  - Slack/Discord: #design-system-dev for quick questions
+  - Pair programming: Joint design/dev sessions for complex features
+
+## 17. Animation and Motion Design
+
+### 17.1 Principles and Purposes
+- **Purposeful Motion**:
+  - Feedback: Confirm action received (button press)
+  - Guidance: Show spatial relationships (nav drawer slide)
+  - Attention: Draw focus to changed state (toast notification)
+  - Causality: Demonstrate cause-effect (drag → sort)
+  - Continuity: Maintain context during transitions (carousel)
+  - Delight: Appropriate brand personality (subtle, professional)
+- **Performance First**:
+  - 60fps target: 16ms per frame budget
+  - Composited properties: transform, opacity (avoid layout/paint)
+  - Limit simultaneous animations: Maximum 3-4 concurrent
+  - Disable preference: Respect prefers-reduced-media
+  - Break down complex: Stagger rather than overload
+- **Easing and Timing**:
+  - Default: ease-out (cubic-bezier(0.25, 0.1, 0.25, 1))
+  - Entrance: ease-out (decelerating into place)
+  - Exit: ease-in (accelerating out of view)
+  - User-initiated: mirror (symmetric in/out)
+  - Nature-inspired: gentle springs, not mechanical
+  - Duration baseline: 100-200ms (UI), 300-500ms (page)
+- **Types of Animation**:
+  - Microinteractions: Button states, form validation, toggles
+  - Page transitions: Fade, slide, scale (between views)
+  - List operations: Insert, remove, reorder (with spacing)
+  - Panel animations: Drawer/slide-in, modal scale/fade
+  - Data transitions: Chart updates, table sorting, filtering
+  - Illustrative: Onboarding, empty states, celebratory moments
+
+### 17.2 Implementation Guidelines
+- **CSS Animations**:
+  - Prefer transitions for state changes
+  - Keyframes for complex sequences
+  - Will-change: Use sparingly, remove after animation
+  - Hardware acceleration: translateZ(0) or translate3d(0,0,0)
+  - Prefix-free: Use postprocessing (autoprefixer) or modern browsers
+- **JavaScript Animation**:
+  - Frame request: requestAnimationFrame for timing

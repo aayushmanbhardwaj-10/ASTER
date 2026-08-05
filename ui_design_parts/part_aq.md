@@ -1,0 +1,94 @@
+  - Footer: Summary, pagination, actions
+  - Column types: Text, number, date, boolean, action, custom
+  - Virtualization: For large row counts (>100)
+  - Export: CSV, JSON, Excel (with formatting)
+- **Card Variations**:
+  - Basic: Border, radius, padding, elevation
+  - Image: Cover/contain, aspect ratio, overlay
+  - Actions: Footer button bar
+  - Header: Title + subtitle + actions
+  - Expandable: Click header to reveal body
+  - Draggable: Handle + ghost element during drag
+- **Tabs and Steppers**:
+  - Tabs: Horizontal scroll, vertical, icon+label
+  - Tab panels: Animation, lazy load, keep mount
+  - Stepper: Vertical/horizontal, connector line
+  - Step content: Optional, allows vertical steppers
+  - Editable: Label becomes input on click/double
+
+### 18.4 Data-Specific Components
+- **Financial Display**:
+  - CurrencyInput: Symbol positioning, precision, grouping
+  - PercentInput: % suffix, 0-100 range or signed
+  - RatioInput: Specific decimal places (typically 4)
+  - LargeNumber: Abbreviation (K/M/B/T) with tooltip
+  - SparkLine: Mini chart, height, color, tooltip
+  - DataPoint: Label + value + change (Δ +%)
+  - MetricCard: Title, value, trend, helper text
+- **Chart Wrappers**:
+  - ResponsiveContainer: Maintains aspect ratio
+  - LoadingState: Skeletons or spinner
+  - ErrorState: Retry button, error details
+  - TooltipManager: Shared configuration, customization
+  - Legend: Horizontal/vertical, paginated, click-to-toggle
+  - ZoomAndPan: Reset button, wheel/drag sensitivity
+- **Table Extensions**:
+  - FinancialTable: Number formatting, sorting, conditional formatting
+  - PivotTable: Drag-drop fields, aggregation, filtering
+  - TreeTable: Hierarchical data with expand/collapse
+  - VirtualWindow: Only render visible rows + buffer
+  - Selection: Checkbox row, click row, range selection
+- **Forms and Wizards**:
+  - Formik/Yup integration: Validation schema, handle submit
+  - StepperForm: Progress, navigation, conditional steps
+  - FieldArray: Dynamic lists (add/remove items)
+  - ConnectionForm: Fieldsets, collapsible sections
+  - ReviewStep: Summary before submission
+  - PaymentForm: Card number formatting, CVC masking, expiry
+
+## 19. Design Patterns and Anti-Patterns
+
+### 19.1 Navigation Patterns
+- **Effective Patterns**:
+  - Progressive disclosure: Show complexity only when needed
+  - Persistent navigation: Always-available top-level sections
+  - Contextual scent: Breadcrumbs show path/hierarchy
+  - Search as navigation: Direct jump to known items
+  - Recent/favorites: Quick access to frequently used
+- **Ineffective Patterns**:
+  - Mystery meat navigation: Icons without labels
+  - Overly deep hierarchies: >3 levels without search/breadcrumb
+  - Inconsistent labeling: Same concept different names
+  - Dead ends: No way back or to related content
+  - Modal overlays: For primary navigation (disorienting)
+- **Mobile Specific**:
+  - Priority+: Show N items, hide rest in "more" menu
+  - Tab bar: 4-5 destinations max, thumb zone
+  - Drawer: For >5 top-level destinations or infrequent use
+  - Bottom sheets: For actions, not navigation
+- **Desktop Specific**:
+  - Mega menu: For extensive category sites (images, descriptions)
+  - Sidebar: Persistent for admin/data-heavy apps
+  - Tab sets: Primary + secondary navigation combos
+  - Keyboard shortcuts: Visible cheat sheet (?) overlay
+
+### 19.2 Form and Input Patterns
+- **Effective Patterns**:
+  - Inline validation: Real-time feedback with correction help
+  - Input masking: Guidance for phone, SSN, credit card
+  - Smart defaults: Pre-fill based on context/past behavior
+  - Field grouping: Logical sections with visual separation
+  - Progressive disclosure: Advanced options toggle
+  - Save draft: For long/complex forms
+- **Ineffective Patterns**:
+  - Reset buttons: Almost never what user wants
+  - Premature submission: On Enter without intent
+  - Poor error messages: "Invalid input" without guidance
+  - Missing required indicators: * alone not sufficient
+  - Inconsistent controls: Switch vs checkbox for same concept
+- **Mobile Optimizations**:
+  - Appropriate keyboards: tel, number, email, url
+  - Label placement: Above input (more vertical space)
+  - Large touch targets: Minimum 44x44px
+  - Auto-advance: For PINs, codes (after N digits)
+- **Desktop Enhancements**:
