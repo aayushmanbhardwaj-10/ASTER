@@ -1,0 +1,292 @@
+.statisticsCards {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  background: #F8F9FA;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  height: 100%;
+}
+
+.statCard:hover {
+  background: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 51, 102, 0.2);
+}
+
+.statIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.statIconBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  opacity: 0.1;
+}
+
+.statIcon span {
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.statContent {
+  flex: 1;
+}
+
+.statTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6C757D;
+  margin-bottom: 8px;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.statChange {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.changeValue {
+  color: var(--change-color, #28A745);
+}
+
+.changeValue.positive {
+  --change-color: #28A745;
+}
+
+.changeValue.negative {
+  --change-color: #DC3545;
+}
+
+.changeValue.neutral {
+  --change-color: #6C757D;
+}
+
+/* Empty State Styles */
+.emptyState {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.emptyStateIcon {
+  font-size: 4rem;
+  margin-bottom: 24px;
+  opacity: 0.5;
+}
+
+.emptyStateTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 16px;
+}
+
+.emptyStateDescription {
+  font-size: 1rem;
+  color: #6C757D;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.emptyStateAction {
+  display: inline-flex;
+  align-in-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #003366;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.emptyStateAction:hover {
+  background: #002855;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+}
+
+/* Loading skeleton styles */
+.skeletonCard {
+  background: #F8F9FA;
+  border-radius: 8px;
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeletonIcon {
+  width: 48px;
+  height: 48px;
+  background-color: #E9ECEF;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.skeletonContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeletonLine {
+  height: 4px;
+  background-color: #E9ECEF;
+  border-radius: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .statCard {
+    padding: 12px;
+  }
+
+  .statIcon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+  }
+
+  .statIcon span {
+    font-size: 1.25rem;
+  }
+
+  .statTitle {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+
+  .statValue {
+    font-size: 1.25rem;
+    margin-bottom: 3px;
+  }
+
+  .statChange {
+    font-size: 0.8rem;
+  }
+
+  .emptyState {
+    padding: 32px 16px;
+  }
+
+  .emptyStateIcon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+
+  .emptyStateTitle {
+    font-size: 1.125rem;
+  }
+
+  .emptyStateDescription {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .statisticsCards {
+    padding: 16px;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .emptyState {
+    padding: 24px 12px;
+  }
+
+  .emptyStateIcon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+
+  .emptyStateTitle {
+    font-size: 1rem;
+  }
+
+  .emptyStateDescription {
+    font-size: 0.875rem;
+  }
+}
+
+/* Tooltip styles */
+.statCard {
+  position: relative;
+}
+
+.statCard:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 1000;
+  margin-bottom: 8px;
+}

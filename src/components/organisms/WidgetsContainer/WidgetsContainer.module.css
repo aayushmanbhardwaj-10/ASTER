@@ -1,0 +1,291 @@
+.widgetsContainer {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #003366;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.widgetControls {
+  display: flex;
+  gap: 12px;
+}
+
+.addWidgetBtn,
+.layoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #F8F9FA;
+  border: 1px solid #DEE2E6;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addWidgetBtn:hover,
+.layoutBtn:hover {
+  background: #FFFFFF;
+  border-color: #ADB5BD;
+  color: #212529;
+}
+
+.addWidgetBtn:hover::before,
+.layoutBtn:hover::before {
+  opacity: 0.8;
+}
+
+.widgetsGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+/* Widget Placeholder Styles */
+.widget {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #EEEEEE;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  position: relative;
+  cursor: grab;
+}
+
+.widget:active {
+  cursor: grabbing;
+}
+
+.widget:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  border-color: #DDDDDD;
+}
+
+.widgetHeader {
+  padding: 12px 16px;
+  border-bottom: 1px solid #EEEEEE;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widgetTitlePlaceholder {
+  width: 180px;
+  height: 18px;
+  background-color: #E9ECEF;
+  border-radius: 4px;
+}
+
+.widgetActionsPlaceholder {
+  display: flex;
+  gap: 6px;
+}
+
+.widgetActionBtnPlaceholder {
+  width: 28px;
+  height: 28px;
+  background-color: #E9ECEF;
+  border-radius: 4px;
+}
+
+.widgetContentPlaceholder {
+  padding: 16px;
+}
+
+.widgetContentItemPlaceholder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.widgetContentItemPlaceholder:last-child {
+  margin-bottom: 0;
+}
+
+.widgetLabelPlaceholder {
+  width: 80px;
+  height: 12px;
+  background-color: #E9ECEF;
+  border-radius: 4px;
+}
+
+.widgetValuePlaceholder {
+  width: 60px;
+  height: 16px;
+  background-color: #E9ECEF;
+  border-radius: 4px;
+}
+
+/* Add widget placeholder */
+.addWidgetPlaceholder {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: #F8F9FA;
+  border: 2px dashed #DEE2E6;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addWidgetPlaceholder:hover {
+  background: #FFFFFF;
+  border-color: #ADB5BD;
+}
+
+.addWidgetIcon {
+  font-size: 3rem;
+  color: #003366;
+  margin-bottom: 12px;
+}
+
+.addWidgetText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6C757D;
+}
+
+/* Widget type specific styling */
+.widget.market-overview {
+  border-left: 4px solid #003366;
+}
+
+.widget.watchlist {
+  border-left: 4px solid #28A745;
+}
+
+.widget.performance {
+  border-left: 4px solid #FFC107;
+}
+
+.widget.news {
+  border-left: 4px solid #17A2B8;
+}
+
+.widget.alerts {
+  border-left: 4px solid #DC3545;
+}
+
+.widget.sector {
+  border-left: 4px solid #6f42c1;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .widgetsGrid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .widgetsContainer {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+
+  .widgetControls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .widgetsGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .widgetHeader {
+    padding: 10px 12px;
+  }
+
+  .widgetTitlePlaceholder {
+    width: 150px;
+  }
+
+  .widgetActionsPlaceholder {
+    gap: 4px;
+  }
+
+  .widgetActionBtnPlaceholder {
+    width: 24px;
+    height: 24px;
+  }
+
+  .widgetContentPlaceholder {
+    padding: 12px;
+  }
+
+  .widgetLabelPlaceholder {
+    width: 60px;
+  }
+
+  .widgetValuePlaceholder {
+    width: 40px;
+  }
+
+  .addWidgetPlaceholder {
+    padding: 30px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .widgetsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .widgetControls {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .addWidgetBtn,
+  .layoutBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Draggable attributes */
+.widget[data-dragging] {
+  opacity: 0.5;
+  transform: rotate(2deg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.widget[data-dragging] .widgetHeader {
+  background: #F0F0F0;
+}

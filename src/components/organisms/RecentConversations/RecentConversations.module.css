@@ -1,0 +1,316 @@
+.recentConversations {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #003366;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.viewAll {
+  font-size: 0.875rem;
+  color: #003366;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+.arrow {
+  font-size: 0.75rem;
+}
+
+.conversationsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.conversationItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: #F8F9FA;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.conversationItem:hover {
+  background: #FFFFFF;
+  transform: translateX(4px);
+}
+
+.avatarGroup {
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.statusIndicator {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.messageContent {
+  flex: 1;
+}
+
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.participantName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #212529;
+  margin: 0;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #6C757D;
+}
+
+.messageText {
+  font-size: 0.875rem;
+  color: #495057;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.unreadBadge {
+  width: 8px;
+  height: 8px;
+  background-color: #DC3545;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+/* Empty State Styles */
+.emptyState {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.emptyStateIcon {
+  font-size: 4rem;
+  margin-bottom: 24px;
+  opacity: 0.5;
+}
+
+.emptyStateTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 16px;
+}
+
+.emptyStateDescription {
+  font-size: 1rem;
+  color: #6C757D;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.emptyStateAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #003366;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.emptyStateAction:hover {
+  background: #002855;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+}
+
+/* Loading placeholder styles */
+.loadingPlaceholder {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.conversationItem {
+  opacity: 0.7;
+}
+
+.avatarPlaceholder {
+  width: 40px;
+  height: 40px;
+  background-color: #E9ECEF;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.messagePlaceholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.line {
+  height: 4px;
+  background-color: #E9ECEF;
+  border-radius: 2px;
+}
+
+.line:nth-child(2) {
+  width: 70%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+
+  .conversationsList {
+    max-height: 300px;
+  }
+
+  .conversationItem {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .participantName {
+    font-size: 0.85rem;
+  }
+
+  .messageText {
+    font-size: 0.8rem;
+  }
+
+  .emptyState {
+    padding: 32px 16px;
+  }
+
+  .emptyStateIcon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+
+  .emptyStateTitle {
+    font-size: 1.125rem;
+  }
+
+  .emptyStateDescription {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .recentConversations {
+    padding: 16px;
+  }
+
+  .header {
+    gap: 8px;
+  }
+
+  .sectionTitle {
+    font-size: 1.125rem;
+  }
+
+  .conversationItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatarGroup {
+    margin-bottom: 8px;
+  }
+
+  .emptyState {
+    padding: 24px 12px;
+  }
+
+  .emptyStateIcon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+
+  .emptyStateTitle {
+    font-size: 1rem;
+  }
+
+  .emptyStateDescription {
+    font-size: 0.875rem;
+  }
+}
+
+/* Scrollbar styling */
+.conversationsList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.conversationsList::-webkit-scrollbar-track {
+  background: #F1F3F5;
+  border-radius: 3px;
+}
+
+.conversationsList::-webkit-scrollbar-thumb {
+  background-color: #CED4DA;
+  border-radius: 3px;
+}
+
+.conversationsList::-webkit-scrollbar-thumb:hover {
+  background-color: #ADB5BD;
+}
