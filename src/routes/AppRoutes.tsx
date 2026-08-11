@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import RequireAuth from '@/components/organisms/RequireAuth';
 import MainLayout from '@/containers/MainLayout';
 import LoadingFallback from '@/components/organisms/LoadingFallback';
+import LoadingErrorBoundary from '@/components/organisms/LoadingErrorBoundary';
 
 // Lazy load pages
 const LoginPage = lazy(() => import('@/routes/pages/LoginPage'));
@@ -62,6 +63,9 @@ const AppRoutes = () => {
           <RequireAuth>
             <MainLayout showSidebar={true}>
               <Suspense fallback={<LoadingFallbackComponent />}>
+                <LoadingErrorBoundary>
+                  <LoadingFallbackComponent />
+                </LoadingErrorBoundary>
                 <Routes>
                   <Route path="/" element={<Navigate to="/dashboard" replace />} />
                   <Route path="dashboard" element={<DashboardPage />} />
@@ -75,6 +79,9 @@ const AppRoutes = () => {
                       <RequireAuth>
                         <MainLayout showSidebar={true}>
                           <Suspense fallback={<LoadingFallbackComponent />}>
+                            <LoadingErrorBoundary>
+                              <LoadingFallbackComponent />
+                            </LoadingErrorBoundary>
                             <Routes>
                               <Route path="profile" element={<ProfilePage />} />
                               <Route path="account" element={<AccountPage />} />
