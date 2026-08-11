@@ -1,4 +1,4 @@
-// Example auth service demonstrating dependency injection pattern
+// Example auth service demonstrating dependency injection pattern with caching
 
 export interface User {
   id: string;
@@ -21,6 +21,10 @@ export interface AuthServiceInterface {
 // - Logger service for audit trails
 export class AuthService implements AuthServiceInterface {
   private currentUser: User | null = null;
+  // Cache for login responses to avoid repeated API calls for the same credentials
+  // In a real app, you might want to cache the token or user data with a TTL
+  private loginCache = new Map<string, { data: User; timestamp: number }>();
+  private readonly CACHE_DURATION_MS = 60 * 1000; // 1 minute cache duration
 
   // Dependencies would be injected via constructor in a real DI container
   constructor() {
@@ -35,6 +39,13 @@ export class AuthService implements AuthServiceInterface {
   }
 
   async login(email: string, _password: string): Promise<User> {
+    // Check cache first
+    const now = Date.now();
+    const cached = this.loginCache.get(email);
+    if (cached && (now - cached.timestamp) < this.CACHE_DURATION_MS) {
+      return cached.data;
+    }
+
     // In real implementation:
     // 1. Validate input
     // 2. Call API service to authenticate
@@ -42,7 +53,9 @@ export class AuthService implements AuthServiceInterface {
     // 4. Set current user
     // 5. Log authentication event
 
-    // Mock implementation for demonstration
+    // Simulate API delay for demonstration
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     const mockUser: User = {
       id: 'user-123',
       email,
@@ -51,11 +64,18 @@ export class AuthService implements AuthServiceInterface {
     };
 
     this.currentUser = mockUser;
+    // Cache the result
+    this.loginCache.set(email, { data: mockUser, timestamp: now });
+
     return mockUser;
   }
 
   logout(): void {
     // Clear current user and tokens
+    if (this.currentUser) {
+      // Remove from cache when logging out
+      this.loginCache.delete(this.currentUser.email);
+    }
     this.currentUser = null;
     // In real implementation: call storage service to clear tokens
   }
