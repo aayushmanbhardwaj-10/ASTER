@@ -1,8 +1,5 @@
 import React from 'react';
-import ChatMessage from './ChatMessage';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeHighlight from 'rehype-highlight';
+import VirtualizedChatList from './VirtualizedChatList';
 import styles from './ChatMessages.module.css';
 
 interface Message {
@@ -28,7 +25,7 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
       {messages.length === 0 && !isStreaming ? (
         <div className={styles.emptyState}>
           <div className={styles.emptyStateIcon}>
-            ����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������� ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������${"����������������������������������������������������"}����
+            �� 💬
           </div>
           <h3 className={styles.emptyStateTitle}>No messages yet</h3>
           <p className={styles.emptyStateDescription}>
@@ -37,31 +34,11 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
         </div>
       ) : (
         <>
-          {messages.map(msg => (
-            <ChatMessage key={msg.id} message={msg} />
-          ))}
-          {isStreaming && (
-            <div className={`${styles.message} ${styles.ai}`}>
-              <div className={styles.messageHeader}>
-                <span className={styles.senderName}>ASTER</span>
-                <span className={styles.timestamp}>
-                  {new Date().toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                  })}
-                </span>
-              </div>
-              <div className={styles.messageContent}>
-                {/* Render streaming markdown content */}
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  rehypePlugins={[rehypeHighlight]}
-                >
-                  {streamingContent}
-                </ReactMarkdown>
-              </div>
-            </div>
-          )}
+          <VirtualizedChatList
+            messages={messages}
+            streamingContent={streamingContent}
+            isStreaming={isStreaming}
+          />
         </>
       )}
     </div>
