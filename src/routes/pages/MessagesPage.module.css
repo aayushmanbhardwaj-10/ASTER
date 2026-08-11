@@ -2,9 +2,14 @@
   display: flex;
   height: 100%;
   max-height: 100vh;
-  background-color: #f8f9fa;
+  /* Make the main content transparent so the orbital hero section shows through */
+  background-color: transparent;
+  /* Add some padding for content spacing */
+  padding: var(--spacing-6);
+  box-sizing: border-box;
 }
 
+/* Ensure children don't shrink */
 .messagesPage > * {
   flex-shrink: 0;
 }
@@ -12,7 +17,9 @@
 /* ConversationSidebar will take a fixed width */
 .messagesPage > :first-child {
   width: 280px;
-  border-right: 1px solid #e9ecef;
+  border-right: 1px solid rgba(233, 236, 239, 0.3); /* More subtle border for dark background */
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent dark background */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
 }
 
 /* ChatArea will take the remaining space */
@@ -20,4 +27,76 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.15); /* Semi-transparent dark background */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border-left: 1px solid rgba(233, 236, 239, 0.2); /* Subtle border */
+}
+
+/* Additional styling for better readability on dark background */
+.messagesPage .message.user {
+  background-color: rgba(59, 130, 246, 0.7); /* Blue with transparency */
+  color: white;
+}
+
+.messagesPage .message.ai {
+  background-color: rgba(255, 255, 255, 0.1); /* Very light transparent */
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Empty state styling for dark background */
+.messagesPage .emptyStateTitle,
+.messagesPage .emptyStateDescription {
+  color: white;
+}
+
+.messagesPage .emptyStateIcon {
+  opacity: 0.6;
+}
+
+/* Input styling */
+.messagesPage .ChatInput {
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.messagesPage .ChatInput input {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.messagesPage .ChatInput input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.messagesPage .ChatInput button {
+  background-color: rgba(59, 130, 246, 0.7);
+  color: white;
+  border: none;
+}
+
+.messagesPage .ChatInput button:hover {
+  background-color: rgba(59, 130, 246, 0.9);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .messagesPage > :first-child {
+    width: 70px; /* Icon-only sidebar on mobile */
+    border-right: none;
+    border-bottom: 1px solid rgba(233, 236, 239, 0.3);
+  }
+
+  .messagesPage > :last-child {
+    border-left: none;
+    border-top: 1px solid rgba(233, 236, 239, 0.2);
+  }
+
+  .messagesPage {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
 }
