@@ -1,0 +1,204 @@
+.loadingLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: var(--spacing-25); /* 200px */
+  padding: var(--spacing-6);
+  text-align: center;
+  background-color: var(--color-background-default);
+}
+
+.loadingContent {
+  width: 100%;
+  max-width: var(--spacing-62); /* 500px */
+}
+
+/* Skeleton loading styles */
+.skeletonTitle,
+.skeletonSubtitle,
+.skeletonContent {
+  margin-bottom: var(--spacing-6);
+}
+
+.skeletonLine {
+  height: var(--spacing-2); /* 16px */
+  background: linear-gradient(90deg, var(--color-neutral-100) 25%, var(--color-neutral-200) 50%, var(--color-neutral-100) 75%);
+  background-size: 200% 100%;
+  animation: loading var(--duration-muchSlower) ease-in-out infinite;
+  border-radius: var(--radius-xs);
+  margin-bottom: var(--spacing-1);
+}
+
+.skeletonLine:last-child {
+  margin-bottom: 0;
+}
+
+.skeletonBlock {
+  width: 100%;
+  height: var(--spacing-15); /* 120px */
+  background: linear-gradient(90deg, var(--color-neutral-100) 25%, var(--color-neutral-200) 50%, var(--color-neutral-100) 75%);
+  background-size: 200% 100%;
+  animation: loading var(--duration-muchSlower) ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+/* Keyframes using transition duration */
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Spinner styles */
+.spinnerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spinner {
+  width: var(--spacing-6); /* 48px */
+  height: var(--spacing-6); /* 48px */
+  border: var(--spacing-0-5) solid var(--color-neutral-100); /* 3px */
+  border-top: var(--spacing-0-5) solid var(--color-primary-800); /* 3px */
+  border-radius: 50%;
+  animation: spin var(--duration-base) linear infinite;
+  margin-bottom: var(--spacing-3);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinnerTitle {
+  margin: 0 0 var(--spacing-2) 0; /* 0 0 8px 0 */
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
+}
+
+.spinnerSubtitle {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+/* Progress bar styles */
+.progressContainer {
+  text-align: center;
+}
+
+.progressTitle {
+  margin: 0 0 var(--spacing-3) 0; /* 0 0 12px 0 */
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
+}
+
+.progressSubtitle {
+  margin: 0 0 var(--spacing-6) 0; /* 0 0 24px 0 */
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.progressBar {
+  width: 100%;
+  max-width: var(--spacing-50); /* 400px */
+  height: var(--spacing-1); /* 8px */
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-primary-800);
+  transition: width var(--transition-base);
+}
+
+/* Animate progress bar */
+.progressFill.animate {
+  width: 100%;
+  animation: progress var(--duration-muchSlower) ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* Action button */
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-1);
+  background-color: var(--color-primary-800);
+  color: var(--color-background-default);
+  border: none;
+  padding: var(--spacing-3) var(--spacing-6); /* 12px 24px */
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: var(--transition-hover);
+  margin-top: var(--spacing-6);
+}
+
+.actionButton:hover {
+  background-color: var(--color-primary-700);
+}
+
+.actionButton:active {
+  background-color: var(--color-primary-600);
+  transform: scale(0.95);
+}
+
+.actionButton:disabled {
+  background-color: var(--color-neutral-400);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Focus states for accessibility */
+.actionButton:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .loadingLayout {
+    padding: var(--spacing-4);
+  }
+
+  .spinner {
+    width: var(--spacing-4-5); /* 36px */
+    height: var(--spacing-4-5); /* 36px */
+  }
+
+  .progressBar {
+    max-width: 100%;
+  }
+
+  .loadingContent {
+    max-width: 100%;
+  }
+}

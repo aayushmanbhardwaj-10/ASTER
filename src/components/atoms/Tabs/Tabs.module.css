@@ -1,0 +1,229 @@
+.tabsRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Horizontal orientation (default) */
+.horizontal {
+  /* flex-direction: row for the tab list */
+}
+.horizontal > .tabList {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+/* Vertical orientation */
+.vertical {
+  /* flex-direction: row for the root, with tab list vertical and panels horizontal */
+}
+.vertical > .tabList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* We'll create a tabList class for the button container */
+.tabList {
+  /* This class is not directly applied, but we can use it for styling if needed */
+}
+
+/* Tab button */
+.tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px; /* sm size */
+  min-width: 32px;
+  padding: 0 12px;
+  font-weight: 500;
+  font-size: 0.875rem; /* sm */
+  border: 2px solid transparent;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  /* Enhanced tab micro-interactions */
+  transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Tab ripple effect */
+.tab::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 123, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tab:not(.disabled):not(.selected):active::after {
+  width: 80px;
+  height: 80px;
+  opacity: 0;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.1s ease;
+}
+
+/* Enhanced hover states */
+.tab:hover:not(.disabled):not(.selected) {
+  color: #212529;
+  background-color: #f1f3f5;
+  border-color: #ced4da;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced selected states */
+.selected {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.selected:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced disabled states */
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.disabled:hover,
+.disabled:active {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Enhanced focus states */
+.tab:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Boxed variant enhancements */
+.boxed .tab {
+  margin: 0;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ced4da;
+}
+
+.boxed .tab:hover:not(.disabled):not(.selected) {
+  border-color: #adb5bd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.boxed .selected {
+  border-color: #003366;
+  background-color: #e9ecef;
+  color: #212529;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.boxed .selected:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tab sizes */
+.sm .tab {
+  min-height: 32px;
+  min-width: 32px;
+  padding: 0 12px;
+  font-size: 0.875rem;
+}
+
+.md .tab {
+  min-height: 40px;
+  min-width: 40px;
+  padding: 0 16px;
+  font-size: 1rem;
+}
+
+.lg .tab {
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 20px;
+  font-size: 1.125rem;
+}
+
+/* Selected tab */
+.selected {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+}
+
+/* Disabled tab */
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Hover and focus states for tabs */
+.tab:hover:not(.disabled):not(.selected) {
+  color: #212529;
+  background-color: #f1f3f5;
+  border-color: #ced4da;
+}
+
+.tab:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Variants */
+.boxed {
+  /* Boxed variant: tabs have borders and spacing */
+}
+.boxed .tab {
+  margin: 0;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ced4da;
+}
+.boxed .tab:hover:not(.disabled):not(.selected) {
+  border-color: #adb5bd;
+}
+.boxed .selected {
+  border-color: #003366;
+  background-color: #e9ecef;
+  color: #212529;
+}
+
+/* Tab panels container - this would be used by the parent component that uses Tabs.
+   We don't render panels here, but we can provide a class for the panels if needed. */
+.tabPanels {
+  margin-top: 8px;
+  border-top: 1px solid #e9ecef;
+  padding-top: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .horizontal {
+    /* On small screens, horizontal tabs can become vertical */
+    /* Or we can keep them horizontal and let them wrap */
+  }
+}

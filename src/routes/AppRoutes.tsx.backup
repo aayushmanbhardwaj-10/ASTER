@@ -1,0 +1,47 @@
+import { lazy, Suspense } from 'react';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import RequireAuth from '@/components/organisms/RequireAuth';
+import MainLayout from '@/containers/MainLayout';
+import LoadingLayout from '@/components/organisms/LoadingLayout/LoadingLayout';
+
+// Lazy load pages
+const LoginPage = lazy(() => import('../routes/pages/LoginPage'));
+const DashboardPage = lazy(() => import('../routes/pages/DashboardPage'));
+const AnalysisPage = lazy(() => import('../routes/pages/AnalysisPage'));
+const PortfolioPage = lazy(() => import('../routes/pages/PortfolioPage'));
+const NotFoundPage = lazy(() => import('../routes/pages/NotFoundPage'));
+
+// Fallback UI while lazy loading
+const LoadingFallback = () => (
+  <div className="loading-fallback">
+    <LoadingLayout variant="spinner" />
+  </div>
+);
+
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <MainLayout showSidebar={true}>
+              <Suspense fallback={<LoadingFallback />}>
+                <Outlet />
+              </Suspense>
+            </MainLayout>
+          </RequireAuth>
+        }
+      >
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="dashboard" element={<DashboardPage />} />
+        <Route path="analysis" element={<AnalysisPage />} />
+        <Route path="portfolio" element={<PortfolioPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
+  );
+};
+
+export default AppRoutes;

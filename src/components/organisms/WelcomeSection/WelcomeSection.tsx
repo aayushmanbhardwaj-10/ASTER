@@ -1,7 +1,12 @@
 import React from 'react';
 import styles from './WelcomeSection.module.css';
+import MarketStatus from './MarketStatus';
 
+/**
+ * Props for the WelcomeSection component
+ */
 interface WelcomeSectionProps {
+  /** Current user object or null if not authenticated */
   user: {
     name: string;
     email: string;
@@ -9,26 +14,23 @@ interface WelcomeSectionProps {
   } | null;
 }
 
+/**
+ * WelcomeSection component displays the welcome message and market status
+ * Shows different content for authenticated vs non-authenticated users
+ * @param props - The component props containing user information
+ */
 const WelcomeSection: React.FC<WelcomeSectionProps> = ({ user }) => {
   if (!user) {
     return (
-      <section className={styles.welcomeSection}>
+      <section className={styles.welcomeSection} aria-label="Welcome section">
         <div className={styles.welcomeContent}>
-          <div className={styles.emptyStateIcon}>������������������</div>
+          <div className={styles.emptyStateIcon}>������������������������������������</div>
           <h1 className={styles.welcomeTitle}>Welcome to ASTER</h1>
           <p className={styles.welcomeSubtitle}>
-            Please log in to access your personalized dashboard and financial insights.
+            Please log in to access your personalized dashboard and financial
+            insights.
           </p>
-          <div className={styles.marketStatus}>
-            <div className={styles.statusItem}>
-              <span className={styles.statusLabel}>Market Status:</span>
-              <span className={styles.statusValue statusOpen}>Open</span>
-            </div>
-            <div className={styles.statusItem}>
-              <span className={styles.statusLabel}>Next Close:</span>
-              <span className={styles.statusValue}>4:00 PM EST</span>
-            </div>
-          </div>
+          <MarketStatus isOpen={true} />
           <div className={styles.loginPrompt}>
             <p>Sign in to continue</p>
           </div>
@@ -38,7 +40,7 @@ const WelcomeSection: React.FC<WelcomeSectionProps> = ({ user }) => {
   }
 
   return (
-    <section className={styles.welcomeSection}>
+    <section className={styles.welcomeSection} aria-label="Welcome section">
       <div className={styles.welcomeContent}>
         <h1 className={styles.welcomeTitle}>
           Welcome back, {user.name.split(' ')[0]}!
@@ -46,23 +48,10 @@ const WelcomeSection: React.FC<WelcomeSectionProps> = ({ user }) => {
         <p className={styles.welcomeSubtitle}>
           Ready to make informed financial decisions today?
         </p>
-        <div className={styles.marketStatus}>
-          <div className={styles.statusItem}>
-            <span className={styles.statusLabel}>Market Status:</span>
-            <span className={styles.statusValue statusOpen}>Open</span>
-          </div>
-          <div className={styles.statusItem}>
-            <span className={styles.statusLabel}>Next Close:</span>
-            <span className={styles.statusValue}>4:00 PM EST</span>
-          </div>
-          <div className={styles.statusItem}>
-            <span className={styles.statusLabel}>Session:</span>
-            <span className={styles.statusValue}>Regular Trading</span>
-          </div>
-        </div>
+        <MarketStatus isOpen={true} />
       </div>
     </section>
   );
 };
 
-export default WelcomeSection;
+export default React.memo(WelcomeSection);

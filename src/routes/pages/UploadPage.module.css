@@ -1,0 +1,32 @@
+.uploadPage {
+  padding: var(--spacing-6);
+  max-width: var(--spacing-150); /* 1200px */
+  margin: 0 auto;
+  width: 100%;
+  min-height: calc(100vh - var(--spacing-8) - var(--spacing-6)); /* Account for header and footer */
+  display: flex;
+  align-items: flex-start;
+}
+
+/* When there's a sidebar, adjust padding */
+.has-sidebar .uploadPage {
+  padding: var(--spacing-6) var(--spacing-6) var(--spacing-6) calc(var(--spacing-6) * 2);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .uploadPage {
+    padding: var(--spacing-4);
+  }
+
+  .has-sidebar .uploadPage {
+    padding: var(--spacing-4);
+  }
+}
+
+@media (max-width: 640px) {
+  .uploadPage {
+    padding: var(--spacing-3);
+    align-items: stretch;
+  }
+}

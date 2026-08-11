@@ -1,0 +1,22 @@
+{
+  "bloomberg": {
+    "apiKey": "your-bloomberg-api-key-here",
+    "apiSecret": "your-bloomberg-api-secret-here"
+  },
+  "factset": {
+    "apiKey": "your-factset-api-key-here"
+  },
+  "reuters": {
+    "apiKey": "your-reuters-api-key-here"
+  },
+  "alphaVantage": {
+    "apiKey": "your-alpha-vantage-api-key-here"
+  },
+  "twilio": {
+    "accountSid": "your-twilio-account-sid-here",
+    "authToken": "your-twilio-auth-token-here"
+  },
+  "sendgrid": {
+    "apiKey": "your-sendgrid-api-key-here"
+  }
+}

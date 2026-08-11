@@ -1,0 +1,129 @@
+.tooltip {
+  position: fixed;
+  z-index: 1060;
+  max-width: 200px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: tooltipFadeIn 0.15s ease forwards;
+  /* We'll set the color based on variant */
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Enhanced tooltip micro-interactions */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Enhanced hover/focus effects */
+.tooltip:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Light variant */
+.light {
+  color: #212529;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* Enhanced light variant hover */
+}
+
+.light:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Fade in animation */
+@keyframes tooltipFadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Placement classes - we'll use JS to set top/left, but we can also use these for the arrow */
+.top {
+  /* Arrow will be at the bottom */
+}
+.bottom {
+  /* Arrow will be at the top */
+}
+.left {
+  /* Arrow will be at the right */
+}
+.right {
+  /* Arrow will be at the left */
+}
+
+/* Enhanced arrow animations */
+.tooltipArrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  transition: transform 0.2s ease;
+}
+
+/* Arrow positioning based on placement */
+.top .tooltipArrow {
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+.bottom .tooltipArrow {
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: rgba(0, 0, 0, 0.8);
+}
+
+.left .tooltipArrow {
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: rgba(0, 0, 0, 0.8);
+}
+
+.right .tooltipArrow {
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Enhanced arrow hover effects */
+.tooltip:hover .tooltipArrow {
+  border-width: 8px;
+}
+
+/* Light variant arrows */
+.light.top .tooltipArrow {
+  border-top-color: #ffffff;
+}
+
+.light.bottom .tooltipArrow {
+  border-bottom-color: #ffffff;
+}
+
+.light.left .tooltipArrow {
+  border-left-color: #ffffff;
+}
+
+.light.right .tooltipArrow {
+  border-right-color: #ffffff;
+}
+
+/* Enhanced tooltip content */
+.tooltipContent {
+  display: block;
+  /* Subtle text animation */
+  transition: opacity 0.2s ease;
+}
+
+.tooltip:hover .tooltipContent {
+  opacity: 0.9;
+}

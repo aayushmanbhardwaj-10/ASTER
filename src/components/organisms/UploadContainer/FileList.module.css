@@ -1,0 +1,158 @@
+.fileList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  width: 100%;
+}
+
+/* Item spacing */
+.fileItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background-color: var(--color-background-default);
+}
+
+/* Status-based styling - using semantic colors from design tokens */
+.fileItem.uploading {
+  border-color: var(--color-primary-50);
+  background-color: var(--color-primary-50);
+}
+
+.fileItem.success {
+  border-color: var(--color-semantic-positive-300);
+  background-color: rgba(var(--color-semantic-positive-500), 0.05);
+}
+
+.fileItem.error {
+  border-color: var(--color-semantic-negative-300);
+  background-color: rgba(var(--color-semantic-negative-500), 0.05);
+}
+
+/* File info section */
+.fileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-0-5);
+  flex: 1;
+}
+
+/* File details */
+.fileDetails {
+  display: flex;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+/* Individual file properties */
+.fileName {
+  font-weight: var(--font-weight-semibold);
+}
+
+.fileSize {
+  font-weight: var(--font-weight-normal);
+}
+
+/* File actions section */
+.fileActions {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+  margin-top: var(--spacing-2);
+}
+
+/* Status indicators with semantic meaning */
+.statusSuccess {
+  color: var(--color-semantic-positive-500);
+  font-weight: var(--font-weight-semibold);
+}
+
+.statusError {
+  color: var(--color-semantic-negative-500);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Action buttons */
+.retryBtn,
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-0-5);
+  padding: var(--spacing-1) var(--spacing-2);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background-color: transparent;
+  color: var(--color-neutral-600);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: var(--transition-hover);
+}
+
+/* Button hover states */
+.retryBtn:hover,
+.deleteBtn:hover {
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-500);
+  background-color: var(--color-neutral-100);
+}
+
+/* Button focus states for accessibility */
+.retryBtn:focus-visible,
+.deleteBtn:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Empty state styling */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-6);
+  gap: var(--spacing-4);
+}
+
+.emptyIcon {
+  font-size: var(--font-size-7xl);
+  opacity: 0.7;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .fileList {
+    gap: var(--spacing-2);
+  }
+
+  .fileItem {
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2);
+  }
+
+  .fileInfo {
+    flex-basis: 100%;
+  }
+
+  .fileActions {
+    margin-top: var(--spacing-2);
+  }
+
+  .fileName {
+    max-width: none;
+  }
+
+  .emptyState {
+    padding: var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .emptyIcon {
+    font-size: var(--font-size-5xl);
+  }
+}

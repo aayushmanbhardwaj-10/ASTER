@@ -1,0 +1,31 @@
+import React, { useState } from 'react';
+import Sidebar from '@/components/organisms/Sidebar/Sidebar';
+import Header from '@/components/organisms/Header/Header';
+import Footer from '@/components/organisms/Footer/Footer';
+import styles from './MainLayout.module.css';
+
+interface MainLayoutProps {
+  children: React.ReactNode;
+}
+
+const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  return (
+    <div className={styles.mainLayout}>
+      <Sidebar
+        collapsed={sidebarCollapsed}
+        onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+      />
+      <div className={styles.contentWrapper}>
+        <Header
+          onSidebarToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+        />
+        <main className={styles.mainContent}>{children}</main>
+        <Footer />
+      </div>
+    </div>
+  );
+};
+
+export default MainLayout;

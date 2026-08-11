@@ -1,0 +1,90 @@
+.footer {
+  height: var(--spacing-6); /* 48px */
+  background-color: var(--color-neutral-50);
+  border-top: 1px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs); /* 14px */
+  color: var(--color-neutral-600);
+}
+
+.footerContent {
+  width: 100%;
+  max-width: var(--spacing-180); /* 1440px */
+  padding: 0 var(--spacing-6); /* 48px */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerLinks {
+  display: flex;
+  gap: var(--spacing-6); /* 48px */
+  align-items: center;
+}
+
+.footerLink {
+  color: var(--color-neutral-600);
+  text-decoration: none;
+  font-size: var(--font-size-xs); /* 14px */
+  transition: var(--transition-base);
+  padding: var(--spacing-1) var(--spacing-2); /* 8px 16px */
+  border-radius: var(--radius-sm);
+}
+
+.footerLink:hover {
+  color: var(--color-primary-500);
+  background-color: var(--color-neutral-100);
+  text-decoration: none;
+}
+
+.footerLink:active {
+  background-color: var(--color-neutral-200);
+  transform: scale(0.95);
+}
+
+.footerLink:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .footer {
+    height: var(--spacing-5); /* 40px */
+    font-size: var(--font-size-0-5); /* 12px */
+  }
+
+  .footerContent {
+    padding: 0 var(--spacing-4); /* 32px */
+  }
+
+  .footerLinks {
+    gap: var(--spacing-4); /* 32px */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footerLink {
+    font-size: var(--font-size-0-5); /* 12px */
+    padding: var(--spacing-0-5) var(--spacing-1-5); /* 4px 12px */
+  }
+}
+
+/* Additional styling for better visual hierarchy */
+.footerContent {
+  background: var(--color-background-paper);
+}
+
+/* Version text styling */
+.footerLink:nth-child(4) {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-0-5); /* 12px */
+  color: var(--color-neutral-500);
+}
+
+.footerLink:nth-child(4):hover {
+  color: var(--color-neutral-600);
+  background-color: transparent;
+}

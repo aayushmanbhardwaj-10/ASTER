@@ -1,22 +1,22 @@
 .widget {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid #EEEEEE;
+  background: var(--color-background-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  border: 1px solid var(--color-neutral-100);
   overflow: hidden;
-  transition: all 0.2s ease;
+  transition: var(--transition-hover);
   position: relative;
 }
 
 .widget:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-  border-color: #DDDDDD;
+  box-shadow: var(--shadow-2);
+  transform: translateY(var(--spacing-0-5));
+  border-color: var(--color-neutral-200);
 }
 
 .widgetHeader {
-  padding: 12px 16px;
-  border-bottom: 1px solid #EEEEEE;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-bottom: 1px solid var(--color-neutral-100);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,101 +25,101 @@
 
 .widgetEdit {
   display: flex;
-  gap: 8px;
+  gap: var(--spacing-2);
   align-items: center;
 }
 
 .widgetInput {
-  padding: 6px 8px;
-  border: 1px solid #CED4DA;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  width: 180px;
+  padding: var(--spacing-1-5) var(--spacing-2);
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-xs);
+  font-size: var(--font-size-sm);
+  width: var(--spacing-22);
 }
 
 .widgetInput:focus {
   outline: none;
-  border-color: #003366;
-  box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.25);
+  border-color: var(--color-primary-800);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-800), 0.25);
 }
 
 .widgetEditActions {
   display: flex;
-  gap: 6px;
+  gap: var(--spacing-1-5);
 }
 
 .widgetEditBtn {
-  padding: 4px 8px;
-  font-size: 0.75rem;
-  border-radius: 4px;
+  padding: var(--spacing-0-5) var(--spacing-1-5);
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-xs);
   border: none;
   cursor: pointer;
 }
 
 .widgetEditBtn:first-child {
-  background: #28A745;
-  color: white;
+  background: var(--color-semantic-positive-500);
+  color: var(--color-background-default);
 }
 
 .widgetEditBtn:first-child:hover {
-  background: #218838;
+  background: var(--color-semantic-positive-600);
 }
 
 .widgetEditBtn:last-child {
-  background: #6C757D;
-  color: white;
+  background: var(--color-neutral-500);
+  color: var(--color-background-default);
 }
 
 .widgetEditBtn:last-child:hover {
-  background: #5A6268;
+  background: var(--color-neutral-600);
 }
 
 .widgetTitle {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #212529;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
   margin: 0;
 }
 
 .widgetActions {
   display: flex;
-  gap: 6px;
+  gap: var(--spacing-1-5);
 }
 
 .widgetActionBtn {
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
+  width: var(--spacing-3-5);
+  height: var(--spacing-3-5);
+  border-radius: var(--radius-xs);
   border: none;
   background: transparent;
-  color: #6C757D;
+  color: var(--color-neutral-500);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
 }
 
 .widgetActionBtn:hover {
-  background: #F8F9FA;
-  color: #212529;
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-800);
 }
 
 .widgetActionBtn:last-child:hover {
-  background: #F8D7DA;
-  color: #DC3545;
+  background: rgba(var(--color-semantic-negative-500), 0.1);
+  color: var(--color-semantic-negative-500);
 }
 
 .widgetContent {
-  padding: 16px;
+  padding: var(--spacing-4);
 }
 
 .widgetContentItem {
   display: flex;
-  justify-space-between;
+  justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #F1F3F5;
+  padding: var(--spacing-2) 0;
+  border-bottom: 1px solid var(--color-neutral-100);
 }
 
 .widgetContentItem:last-child {
@@ -127,67 +127,67 @@
 }
 
 .widgetLabel {
-  font-size: 0.875rem;
-  color: #6C757D;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
 }
 
 .widgetValue {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #212529;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
 }
 
 .widgetChange {
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-0-5) var(--spacing-0-75);
+  border-radius: var(--radius-xs);
 }
 
 .widgetChange.positive {
-  background: rgba(40, 167, 69, 0.1);
-  color: #28A745;
+  background: rgba(var(--color-semantic-positive-500), 0.1);
+  color: var(--color-semantic-positive-500);
 }
 
 .widgetChange.negative {
-  background: rgba(220, 53, 69, 0.1);
-  color: #DC3545;
+  background: rgba(var(--color-semantic-negative-500), 0.1);
+  color: var(--color-semantic-negative-500);
 }
 
 .widgetTimestamp {
-  font-size: 0.75rem;
-  color: #ADB5BD;
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-400);
 }
 
 /* Loading state styles */
 .widgetTitlePlaceholder {
-  width: 180px;
-  height: 18px;
-  background-color: #E9ECEF;
-  border-radius: 4px;
+  width: var(--spacing-22);
+  height: var(--spacing-2-25);
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs);
 }
 
 .widgetActionsPlaceholder {
   display: flex;
-  gap: 6px;
+  gap: var(--spacing-1-5);
 }
 
 .widgetActionBtnPlaceholder {
-  width: 28px;
-  height: 28px;
-  background-color: #E9ECEF;
-  border-radius: 4px;
+  width: var(--spacing-3-5);
+  height: var(--spacing-3-5);
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs);
 }
 
 .widgetContentPlaceholder {
-  padding: 16px;
+  padding: var(--spacing-4);
 }
 
 .widgetContentItemPlaceholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: var(--spacing-3);
 }
 
 .widgetContentItemPlaceholder:last-child {
@@ -195,53 +195,144 @@
 }
 
 .widgetLabelPlaceholder {
-  width: 80px;
-  height: 12px;
-  background-color: #E9ECEF;
-  border-radius: 4px;
+  width: var(--spacing-10);
+  height: var(--spacing-1-5);
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs);
 }
 
 .widgetValuePlaceholder {
-  width: 60px;
-  height: 16px;
-  background-color: #E9ECEF;
-  border-radius: 4px;
+  width: var(--spacing-7-5);
+  height: var(--spacing-2);
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs);
 }
 
 .widgetChartPlaceholderLoading {
   display: flex;
-  gap: 4px;
-  height: 80px;
+  gap: var(--spacing-0-5);
+  height: var(--spacing-10);
   align-items: flex-end;
 }
 
 .chartBarLoading {
   flex: 1;
-  background-color: #E9ECEF;
-  border-radius: 4px 4px 0 0;
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs) var(--radius-xs) 0 0;
 }
 
 /* Widget type specific styling */
 .widget.market-overview {
-  border-left: 4px solid #003366;
+  border-left: 4px solid var(--color-primary-800);
 }
 
 .widget.watchlist {
-  border-left: 4px solid #28A745;
+  border-left: 4px solid var(--color-semantic-positive-500);
 }
 
 .widget.performance {
-  border-left: 4px solid #FFC107;
+  border-left: 4px solid var(--color-semantic-warning-500);
 }
 
 .widget.news {
-  border-left: 4px solid #17A2B8;
+  border-left: 4px solid var(--color-semantic-info-500);
 }
 
 .widget.alerts {
-  border-left: 4px solid #DC3545;
+  border-left: 4px solid var(--color-semantic-negative-500);
 }
 
 .widget.sector {
-  border-left: 4px solid #6f42c1;
+  border-left: 4px solid var(--color-primary-600);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .widget {
+    margin-bottom: var(--spacing-1-5);
+  }
+
+  .widgetHeader {
+    padding: var(--spacing-2-5) var(--spacing-3);
+  }
+
+  .widgetTitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .widgetActions {
+    gap: var(--spacing-1);
+  }
+
+  .widgetActionBtn {
+    width: var(--spacing-3);
+    height: var(--spacing-3);
+    font-size: var(--font-size-xs);
+  }
+
+  .widgetContent {
+    padding: var(--spacing-3);
+  }
+
+  .widgetContentItem {
+    padding: var(--spacing-1-5) 0;
+  }
+
+  .widgetLabel {
+    font-size: var(--font-size-xs);
+  }
+
+  .widgetValue {
+    font-size: var(--font-size-sm);
+  }
+
+  .widgetChange {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-0-25) var(--spacing-0-5);
+  }
+
+  .widgetTimestamp {
+    font-size: var(--font-size-0-5);
+  }
+
+  /* Loading state placeholders */
+  .widgetTitlePlaceholder {
+    width: var(--spacing-18-5);
+    height: var(--spacing-2);
+  }
+
+  .widgetActionsPlaceholder {
+    gap: var(--spacing-1);
+  }
+
+  .widgetActionBtnPlaceholder {
+    width: var(--spacing-3);
+    height: var(--spacing-3);
+  }
+
+  .widgetContentPlaceholder {
+    padding: var(--spacing-3);
+  }
+
+  .widgetContentItemPlaceholder {
+    margin-bottom: var(--spacing-2);
+  }
+
+  .widgetLabelPlaceholder {
+    width: var(--spacing-7-5);
+    height: var(--spacing-1-25);
+  }
+
+  .widgetValuePlaceholder {
+    width: var(--spacing-6-25);
+    height: var(--spacing-1-5);
+  }
+
+  .widgetChartPlaceholderLoading {
+    height: var(--spacing-7-5);
+  }
+
+  .chartBarLoading {
+    border-radius: var(--radius-0-75) var(--radius-0-75) 0 0;
+  }
 }

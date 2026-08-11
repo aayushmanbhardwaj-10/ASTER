@@ -1,0 +1,151 @@
+.avatarPage {
+  min-height: 100vh;
+  background-color: var(--color-background-default);
+}
+
+.avatarCard {
+  background: var(--color-background-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2);
+  padding: var(--spacing-8);
+  max-width: var(--spacing-62); /* 500px */
+  margin: 0 auto;
+}
+
+.avatarPreview {
+  position: relative;
+  text-align: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.avatarImg {
+  width: var(--spacing-18); /* 150px */
+  height: var(--spacing-18); /* 150px */
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 3px solid var(--color-primary-600);
+  transition: var(--transition-hover);
+}
+
+.avatarImg:hover {
+  transform: scale(1.05);
+}
+
+.avatarOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-full);
+  background-color: rgba(var(--color-primary-600), 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition-hover);
+}
+
+.avatarPreview:hover .avatarOverlay {
+  opacity: 1;
+}
+
+.avatarOverlayContent {
+  text-align: center;
+}
+
+.avatarIcon {
+  font-size: var(--spacing-8); /* 3rem -> 64px (8*8) */
+  margin-bottom: var(--spacing-1);
+}
+
+.uploadButton {
+  display: inline-block;
+  background-color: var(--color-primary-500);
+  color: var(--color-background-default);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-1-5) var(--spacing-3);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: var(--transition-hover);
+  font-weight: var(--font-weight-medium);
+}
+
+.uploadButton:hover {
+  background-color: var(--color-primary-600);
+}
+
+.avatarNotes {
+  background-color: var(--color-background-hover);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+.avatarNotes p {
+  margin: var(--spacing-1) 0;
+  color: var(--color-neutral-400);
+  font-size: var(--font-size-sm);
+}
+
+.uploadStatus {
+  margin-top: var(--spacing-4);
+  text-align: center;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.statusSuccess {
+  background-color: var(--color-semantic-positive-50);
+  color: var(--color-semantic-positive-800);
+}
+
+.statusError {
+  background-color: var(--color-semantic-negative-50);
+  color: var(--color-semantic-negative-800);
+}
+
+.statusUploading {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-800);
+}
+
+.spinner {
+  width: var(--spacing-3); /* 24px */
+  height: var(--spacing-3); /* 24px */
+  border: 3px solid var(--color-neutral-200);
+  border-top: 3px solid var(--color-primary-500);
+  border-radius: var(--radius-full);
+  animation: spin var(--transition-base) linear infinite;
+  margin-bottom: var(--spacing-1);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .avatarCard {
+    padding: var(--spacing-6);
+    margin: 0 var(--spacing-3);
+  }
+
+  .avatarImg {
+    width: var(--spacing-15); /* 120px */
+    height: var(--spacing-15); /* 120px */
+  }
+
+  .avatarIcon {
+    font-size: var(--spacing-6); /* 24px */
+  }
+}

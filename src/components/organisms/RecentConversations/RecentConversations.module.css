@@ -1,34 +1,34 @@
 .recentConversations {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: var(--color-background-default);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-1);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-5);
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #003366;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary-800);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-2);
 }
 
 .viewAll {
-  font-size: 0.875rem;
-  color: #003366;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-800);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--spacing-0-5);
 }
 
 .viewAll:hover {
@@ -36,30 +36,30 @@
 }
 
 .arrow {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
 }
 
 .conversationsList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-height: 400px;
+  gap: var(--spacing-4);
+  max-height: var(--spacing-50);
   overflow-y: auto;
 }
 
 .conversationItem {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  padding: 12px;
-  background: #F8F9FA;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background: var(--color-neutral-50);
+  border-radius: var(--radius-md);
+  transition: var(--transition-hover);
 }
 
 .conversationItem:hover {
-  background: #FFFFFF;
-  transform: translateX(4px);
+  background: var(--color-background-default);
+  transform: translateX(var(--spacing-1));
 }
 
 .avatarGroup {
@@ -67,21 +67,21 @@
 }
 
 .avatar {
-  width: 40px;
-  height: 40px;
+  width: var(--spacing-5);
+  height: var(--spacing-5);
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid white;
+  border: 2px solid var(--color-background-default);
 }
 
 .statusIndicator {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: var(--spacing-1);
+  height: var(--spacing-1);
   border-radius: 50%;
-  border: 2px solid white;
-  margin-left: 30px;
-  margin-top: 30px;
+  border: 2px solid var(--color-background-default);
+  margin-left: calc(var(--spacing-4) - var(--spacing-0-5));
+  margin-top: calc(var(--spacing-4) - var(--spacing-0-5));
 }
 
 .messageContent {
@@ -92,87 +92,87 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 8px;
+  margin-bottom: var(--spacing-2);
 }
 
 .participantName {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #212529;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
   margin: 0;
 }
 
 .timestamp {
-  font-size: 0.75rem;
-  color: #6C757D;
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-500);
 }
 
 .messageText {
-  font-size: 0.875rem;
-  color: #495057;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
   line-height: 1.4;
   margin: 0;
 }
 
 .unreadBadge {
-  width: 8px;
-  height: 8px;
-  background-color: #DC3545;
+  width: var(--spacing-1);
+  height: var(--spacing-1);
+  background-color: var(--color-semantic-negative-500);
   border-radius: 50%;
   display: inline-block;
-  margin-left: 8px;
+  margin-left: var(--spacing-0-5);
 }
 
 /* Empty State Styles */
 .emptyState {
   text-align: center;
-  padding: 48px 24px;
+  padding: calc(var(--spacing-6) * 2) var(--spacing-6);
 }
 
 .emptyStateIcon {
-  font-size: 4rem;
-  margin-bottom: 24px;
+  font-size: var(--font-size-7xl);
+  margin-bottom: var(--spacing-6);
   opacity: 0.5;
 }
 
 .emptyStateTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #212529;
-  margin-bottom: 16px;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
+  margin-bottom: var(--spacing-4);
 }
 
 .emptyStateDescription {
-  font-size: 1rem;
-  color: #6C757D;
-  margin-bottom: 24px;
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-500);
+  margin-bottom: var(--spacing-6);
   line-height: 1.5;
 }
 
 .emptyStateAction {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: #003366;
-  color: white;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--color-primary-800);
+  color: var(--color-background-default);
   text-decoration: none;
-  font-weight: 500;
-  border-radius: 6px;
-  transition: all 0.2s ease;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  transition: var(--transition-hover);
 }
 
 .emptyStateAction:hover {
-  background: #002855;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+  background: var(--color-primary-700);
+  transform: translateY(var(--spacing-0-5));
+  box-shadow: var(--shadow-2);
 }
 
 /* Loading placeholder styles */
 .loadingPlaceholder {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--spacing-3);
 }
 
 .conversationItem {
@@ -180,9 +180,9 @@
 }
 
 .avatarPlaceholder {
-  width: 40px;
-  height: 40px;
-  background-color: #E9ECEF;
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  background-color: var(--color-neutral-200);
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -191,13 +191,13 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--spacing-1-5);
 }
 
 .line {
-  height: 4px;
-  background-color: #E9ECEF;
-  border-radius: 2px;
+  height: var(--spacing-0-5);
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs);
 }
 
 .line:nth-child(2) {
@@ -209,64 +209,64 @@
   .header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: var(--spacing-3);
   }
 
   .sectionTitle {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
   }
 
   .conversationsList {
-    max-height: 300px;
+    max-height: var(--spacing-40);
   }
 
   .conversationItem {
-    padding: 10px;
-    gap: 10px;
+    padding: var(--spacing-2-5);
+    gap: var(--spacing-2-5);
   }
 
   .avatar {
-    width: 32px;
-    height: 32px;
+    width: var(--spacing-4);
+    height: var(--spacing-4);
   }
 
   .participantName {
-    font-size: 0.85rem;
+    font-size: var(--font-size-sm);
   }
 
   .messageText {
-    font-size: 0.8rem;
+    font-size: var(--font-size-xs);
   }
 
   .emptyState {
-    padding: 32px 16px;
+    padding: var(--spacing-4) var(--spacing-3);
   }
 
   .emptyStateIcon {
-    font-size: 3rem;
-    margin-bottom: 16px;
+    font-size: var(--font-size-5xl);
+    margin-bottom: var(--spacing-4);
   }
 
   .emptyStateTitle {
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
   }
 
   .emptyStateDescription {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
   }
 }
 
 @media (max-width: 480px) {
   .recentConversations {
-    padding: 16px;
+    padding: var(--spacing-3);
   }
 
   .header {
-    gap: 8px;
+    gap: var(--spacing-2);
   }
 
   .sectionTitle {
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
   }
 
   .conversationItem {
@@ -275,42 +275,42 @@
   }
 
   .avatarGroup {
-    margin-bottom: 8px;
+    margin-bottom: var(--spacing-2);
   }
 
   .emptyState {
-    padding: 24px 12px;
+    padding: var(--spacing-3) var(--spacing-2-5);
   }
 
   .emptyStateIcon {
-    font-size: 2.5rem;
-    margin-bottom: 12px;
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-3);
   }
 
   .emptyStateTitle {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 
   .emptyStateDescription {
-    font-size: 0.875rem;
+    font-size: var(--font-size-xs);
   }
 }
 
 /* Scrollbar styling */
 .conversationsList::-webkit-scrollbar {
-  width: 6px;
+  width: var(--spacing-1-5);
 }
 
 .conversationsList::-webkit-scrollbar-track {
-  background: #F1F3F5;
-  border-radius: 3px;
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-xs);
 }
 
 .conversationsList::-webkit-scrollbar-thumb {
-  background-color: #CED4DA;
-  border-radius: 3px;
+  background-color: var(--color-neutral-300);
+  border-radius: var(--radius-xs);
 }
 
 .conversationsList::-webkit-scrollbar-thumb:hover {
-  background-color: #ADB5BD;
+  background-color: var(--color-neutral-400);
 }

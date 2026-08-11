@@ -1,0 +1,171 @@
+.sidebar {
+  width: var(--spacing-30); /* 240px */
+  height: calc(100vh - var(--spacing-8)); /* Below the header */
+  position: fixed;
+  top: var(--spacing-8); /* Below the header */
+  left: 0;
+  background-color: var(--color-background-paper);
+  border-right: 1px solid var(--color-border-default);
+  overflow-y: auto;
+  transition: width var(--transition-base);
+  z-index: var(--z-index-sidebar);
+  box-shadow: var(--shadow-1);
+}
+
+.sidebar.collapsed {
+  width: var(--spacing-8); /* 64px */
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--spacing-8); /* 64px */
+  padding: 0 var(--spacing-4); /* 32px */
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  font-size: var(--spacing-5); /* 40px */
+  cursor: pointer;
+  padding: var(--spacing-1-5); /* 12px */
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-hover);
+}
+
+.toggleButton:hover {
+  color: var(--color-primary-500);
+  background-color: var(--color-neutral-100);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-primary-800);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2); /* 16px */
+}
+
+.logoText {
+  font-family: var(--font-family-primary);
+}
+
+.sidebar.collapsed .logoText {
+  display: none;
+}
+
+.sidebarNav {
+  padding: var(--spacing-4) 0; /* 32px */
+}
+
+.navItem {
+  margin-bottom: var(--spacing-1); /* 8px */
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-4); /* 24px 32px */
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--color-neutral-600);
+  font-size: var(--font-size-sm); /* 14px */
+  transition: var(--transition-hover);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navLink:hover {
+  background-color: var(--color-neutral-50);
+  color: var(--color-primary-800);
+}
+
+.navLink.active {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-800);
+  border-left: 3px solid var(--color-primary-500);
+}
+
+.navLink .icon {
+  margin-right: var(--spacing-3); /* 24px */
+  font-size: var(--font-size-xl); /* 20px */
+  min-width: var(--spacing-3); /* 24px */
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.navLink .text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
+}
+
+/* In collapsed mode, show only icons and adjust layout */
+.sidebar.collapsed .navLink {
+  justify-content: center;
+  padding: var(--spacing-3); /* 24px */
+}
+
+.sidebar.collapsed .navLink .text {
+  display: none;
+}
+
+.sidebar.collapsed .navLink .icon {
+  margin-right: 0;
+}
+
+/* Responsive design: hide sidebar on mobile */
+@media (max-width: 640px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+/* Active states for better feedback */
+.navLink:active {
+  background-color: var(--color-neutral-100);
+  transform: translateY(var(--spacing-0-5));
+}
+
+/* Focus states for accessibility */
+.navLink:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Hover effects for better UX */
+.navLink:hover .icon {
+  color: var(--color-primary-800);
+}
+
+/* Divider between sections */
+.sidebarDivider {
+  height: 1px;
+  background: var(--color-border-default);
+  margin: var(--spacing-4) 0; /* 32px */
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: var(--spacing-1-5); /* 12px */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: var(--color-neutral-50);
+  border-radius: var(--radius-pill);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--color-neutral-300);
+  border-radius: var(--radius-pill);
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-neutral-400);
+}

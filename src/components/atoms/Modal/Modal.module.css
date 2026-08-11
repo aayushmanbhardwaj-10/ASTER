@@ -1,0 +1,131 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: backdropFadeIn 0.2s ease forwards;
+  /* Enhanced backdrop micro-interaction */
+  transition: background-color 0.3s ease;
+}
+
+.backdrop:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.backdrop.exit {
+  animation: backdropFadeOut 0.2s ease forwards;
+}
+
+@keyframes backdropFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backdropFadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.modal {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: modalScaleFadeIn 0.2s ease forwards;
+  overflow: hidden;
+  /* Enhanced modal micro-interactions */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal:active {
+  transform: scale(0.98);
+}
+
+.modal.exit {
+  animation: modalScaleFadeOut 0.2s ease forwards;
+}
+
+@keyframes modalScaleFadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modalScaleFadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* Modal content enhancements */
+.modalTitle {
+  margin: 0;
+  padding: 24px 24px 16px 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem; /* H4 size from design system */
+  color: #212529;
+  border-bottom: 1px solid #e9ecef;
+  /* Subtle hover effect for title area */
+  transition: background-color 0.2s ease;
+}
+
+.modalTitle:hover {
+  background-color: #f8f9fa;
+}
+
+.modalContent {
+  padding: 24px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+}
+
+/* Size overrides */
+.small {
+  max-width: 500px;
+}
+
+.medium {
+  max-width: 700px;
+}
+
+.large {
+  max-width: 900px;
+}
+
+.modalTitle {
+  margin: 0;
+  padding: 24px 24px 16px 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem; /* H4 size from design system */
+  color: #212529;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modalContent {
+  padding: 24px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}

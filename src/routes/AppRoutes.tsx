@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import RequireAuth from '@/components/organisms/RequireAuth';
 import MainLayout from '@/containers/MainLayout';
 import LoadingFallback from '@/components/organisms/LoadingFallback';
@@ -21,7 +21,6 @@ const AnalysisPage = lazy(() => import('@/routes/pages/AnalysisPage'));
 const PortfolioPage = lazy(() => import('@/routes/pages/PortfolioPage'));
 const MessagesPage = lazy(() => import('@/routes/pages/MessagesPage'));
 const UploadPage = lazy(() => import('@/routes/pages/UploadPage'));
-const SettingsPage = lazy(() => import('@/routes/pages/Settings/SettingsPage'));
 const NotFoundPage = lazy(() => import('@/routes/pages/NotFoundPage'));
 
 // Lazy load settings pages
@@ -33,13 +32,19 @@ const NotificationsPage = lazy(() => import('@/routes/pages/Settings/Notificatio
 const ResponsiveSettingsPage = lazy(() => import('@/routes/pages/Settings/ResponsiveSettingsPage'));
 const SecurityPage = lazy(() => import('@/routes/pages/Settings/SecurityPage'));
 
-// Fallback UI while lazy loading
-const LoadingFallbackComponent = () => (
-  <LoadingFallback
-    message="Loading application..."
-    tip="ASTER is preparing your financial intelligence dashboard"
-  />
-);
+// Fallback UI while lazy loading with skeleton screens for better UX
+const LoadingFallbackComponent = () => {
+  return (
+    <LoadingFallback
+      variant="skeleton"
+      skeletonTitle="ASTER Dashboard"
+      skeletonSubtitle="Loading your financial intelligence..."
+      skeletonItems={4}
+      message="Loading application..."
+      tip="ASTER is preparing your financial intelligence dashboard"
+    />
+  );
+};
 
 const AppRoutes = () => {
   return (
@@ -64,31 +69,34 @@ const AppRoutes = () => {
                   <Route path="portfolio" element={<PortfolioPage />} />
                   <Route path="messages" element={<MessagesPage />} />
                   <Route path="upload" element={<UploadPage />} />
-                  <Route path="settings" element={
-                    <RequireAuth>
-                      <MainLayout showSidebar={true}>
-                        <Suspense fallback={<LoadingFallbackComponent />}>
-                          <Routes>
-                            <Route path="profile" element={<ProfilePage />} />
-                            <Route path="account" element={<AccountPage />} />
-                            <Route path="theme" element={<ThemePage />} />
-                            <Route path="preferences" element={<PreferencesPage />} />
-                            <Route path="notifications" element={<NotificationsPage />} />
-                            <Route path="responsive" element={<ResponsiveSettingsPage />} />
-                            <Route path="security" element={<SecurityPage />} />
-                            <Route path="*" element={<Navigate to="/settings/profile" replace />} />
-                          </Routes>
-                        </Suspense>
-                      </MainLayout>
-                    </RequireAuth>
-                  )}
+                  <Route
+                    path="settings"
+                    element={
+                      <RequireAuth>
+                        <MainLayout showSidebar={true}>
+                          <Suspense fallback={<LoadingFallbackComponent />}>
+                            <Routes>
+                              <Route path="profile" element={<ProfilePage />} />
+                              <Route path="account" element={<AccountPage />} />
+                              <Route path="theme" element={<ThemePage />} />
+                              <Route path="preferences" element={<PreferencesPage />} />
+                              <Route path="notifications" element={<NotificationsPage />} />
+                              <Route path="responsive" element={<ResponsiveSettingsPage />} />
+                              <Route path="security" element={<SecurityPage />} />
+                              <Route path="*" element={<Navigate to="/settings/profile" replace />} />
+                            </Routes>
+                          </Suspense>
+                        </MainLayout>
+                      </RequireAuth>
+                    }
+                  />
                   <Route path="*" element={<Navigate to="/dashboard" replace />} />
                 </Routes>
               </Suspense>
             </MainLayout>
           </RequireAuth>
         }
-      >
+      />
 
       {/* Not found route - must be last */}
       <Route path="*" element={<NotFoundPage />} />

@@ -1,0 +1,21 @@
+.progressBar {
+  width: 100%;
+  height: var(--spacing-1); /* 8px */
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  margin-top: var(--spacing-0-5);
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--color-primary-500);
+  transition: width var(--transition-base);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .progressBar {
+    height: var(--spacing-0-5); /* 4px */
+  }
+}

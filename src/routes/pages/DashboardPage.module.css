@@ -1,39 +1,166 @@
 .dashboardPage {
-  background-color: #F8F9FA;
-  min-height: 100vh;
+  background-color: var(--color-neutral-50);
+  min-height: 100svh;
   padding: 0;
 }
 
+/* Welcome section styling */
 .dashboardPage > .welcomeSection {
-  margin: 24px;
+  margin: var(--spacing-6);
+  /* Add subtle elevation to welcome section */
+  box-shadow: var(--shadow-1);
 }
 
+/* Dashboard grid layout */
 .dashboardGrid {
   display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 24px;
-  margin: 0 24px 24px 24px;
+  grid-template-columns: 1fr var(--spacing-38);
+  gap: var(--spacing-6);
+  margin: 0 var(--spacing-6) var(--spacing-6) var(--spacing-6);
 }
 
+/* Left column - stats and conversations */
+.dashboardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+/* Right column - quick actions and widgets */
+.dashboardRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+/* Individual card styling enhancements */
+.dashboardLeft > *,
+.dashboardRight > * {
+  /* These will be applied to the child components */
+  background-color: var(--color-background-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
 @media (max-width: 1024px) {
   .dashboardGrid {
     grid-template-columns: 1fr;
+  }
+
+  /* On smaller screens, stack everything vertically */
+  .dashboardLeft,
+  .dashboardRight {
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .dashboardPage > .welcomeSection {
-    margin: 16px;
+    margin: var(--spacing-4);
   }
 
   .dashboardGrid {
-    margin: 0 16px 16px 16px;
-    gap: 16px;
+    margin: 0 var(--spacing-4) var(--spacing-4) var(--spacing-4);
+    gap: var(--spacing-4);
+  }
+
+  /* Reduce padding on cards for smaller screens */
+  .dashboardLeft > *,
+  .dashboardRight > * {
+    box-shadow: var(--shadow-0); /* Remove shadow on very small screens */
   }
 }
 
 /* Loading states */
 .loading-placeholder {
-  background: #F8F9FA;
-  border-radius: 12px;
+  background: var(--color-neutral-50);
+  border-radius: var(--radius-lg);
+}
+
+/* Enhanced loading states for dashboard */
+.dashboardLoading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8);
+  min-height: var(--spacing-40);
+  background-color: var(--color-neutral-50);
+}
+
+.dashboardLoadingTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
+  margin-bottom: var(--spacing-2);
+}
+
+.dashboardLoadingSubtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+  text-align: center;
+  max-width: var(--spacing-30);
+}
+
+/* Skeleton loading enhancements */
+.dashboardSkeleton {
+  animation: pulse var(--duration-muchSlower) ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Header styling for dashboard sections */
+.dashboardSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-bottom: 1px solid var(--color-neutral-100);
+  background-color: var(--color-neutral-50);
+}
+
+.dashboardSectionTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.dashboardSectionAction {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-500);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  transition: var(--transition-base);
+}
+
+.dashboardSectionAction:hover {
+  text-decoration: underline;
+  color: var(--color-primary-600);
+}
+
+.dashboardSectionAction:active {
+  color: var(--color-primary-700);
+}
+
+.dashboardSectionAction:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
 }

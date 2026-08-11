@@ -1,0 +1,164 @@
+.accountPage {
+  min-height: 100vh;
+  background-color: var(--color-background-default);
+}
+
+.accountCard {
+  background: var(--color-background-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2);
+  padding: var(--spacing-8);
+  max-width: var(--spacing-75); /* 600px */
+  margin: 0 auto;
+}
+
+.accountInfo {
+  margin-bottom: var(--spacing-6);
+}
+
+.accountInfo h2 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-4);
+  color: var(--color-neutral-900);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.infoItem {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-2) 0;
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.infoItem:last-child {
+  border-bottom: none;
+}
+
+.infoLabel {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-500);
+}
+
+.infoValue {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+}
+
+.changePasswordSection {
+  border-top: 1px solid var(--color-border-default);
+  padding-top: var(--spacing-6);
+}
+
+.changePasswordSection h2 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-3);
+  color: var(--color-neutral-900);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.sectionDescription {
+  color: var(--color-neutral-400);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-4);
+}
+
+.passwordForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  margin-bottom: var(--spacing-0-5);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-600);
+}
+
+.formInput {
+  width: 100%;
+  padding: var(--spacing-1-5) var(--spacing-2);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  background-color: var(--color-background-default);
+  color: var(--color-neutral-900);
+  transition: var(--transition-hover);
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: var(--shadow-inner);
+}
+
+.formInput::placeholder {
+  color: var(--color-neutral-400);
+}
+
+.changePasswordButton {
+  width: 100%;
+  padding: var(--spacing-1-5) var(--spacing-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-hover);
+  background-color: var(--color-primary-500);
+  color: var(--color-background-default);
+}
+
+.changePasswordButton:hover:not(:disabled) {
+  background-color: var(--color-primary-600);
+}
+
+.changePasswordButton:disabled {
+  background-color: var(--color-neutral-300);
+  color: var(--color-neutral-500);
+  cursor: not-allowed;
+}
+
+.statusMessage {
+  margin-top: var(--spacing-4);
+  text-align: center;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.statusSuccess {
+  background-color: var(--color-semantic-positive-50);
+  color: var(--color-semantic-positive-800);
+}
+
+.statusError {
+  background-color: var(--color-semantic-negative-50);
+  color: var(--color-semantic-negative-800);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .accountCard {
+    padding: var(--spacing-6);
+    margin: 0 var(--spacing-3);
+  }
+
+  .accountInfo h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  .changePasswordSection h2 {
+    font-size: var(--font-size-lg);
+  }
+}

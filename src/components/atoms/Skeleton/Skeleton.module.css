@@ -1,0 +1,106 @@
+.skeleton {
+  background-color: var(--skeleton-color);
+  background-image: linear-gradient(
+    90deg,
+    var(--skeleton-color) 0%,
+    var(--skeleton-highlight) 50%,
+    var(--skeleton-color) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  /* Enhanced skeleton micro-interactions */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Enhanced hover effect */
+.skeleton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced press effect */
+.skeleton:active {
+  transform: translateY(0);
+}
+
+/* Enhanced shimmer animation with micro-interactions */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Pulse variant for additional feedback */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Variant-specific enhancements */
+.text {
+  /* Additional text-specific styles can go here */
+}
+
+.avatar {
+  border-radius: 50%;
+  /* Avatar-specific hover */
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+.rectangular {
+  /* Additional rectangular styles can go here */
+  /* Rectangular-specific hover */
+}
+
+.rectangular:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Define the CSS variables for the skeleton colors */
+:root {
+  --skeleton-color: #e9ecef;
+  --skeleton-highlight: #f8f9fa;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Variants */
+.text {
+  /* Additional text-specific styles can go here */
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.rectangular {
+  /* Additional rectangular styles can go here */
+}

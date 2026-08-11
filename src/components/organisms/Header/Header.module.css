@@ -1,0 +1,172 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--spacing-8); /* 64px */
+  padding: 0 var(--spacing-6); /* 48px */
+  background-color: var(--color-background-paper);
+  border-bottom: 1px solid var(--color-border-default);
+  color: var(--text-h);
+  box-shadow: var(--shadow-1);
+  z-index: var(--z-index-sticky);
+}
+
+.leftSection,
+.centerSection,
+.rightSection {
+  display: flex;
+  align-items: center;
+}
+
+.leftSection {
+  gap: var(--spacing-4); /* 32px */
+}
+
+.sidebarToggle {
+  background: none;
+  border: none;
+  font-size: var(--spacing-5); /* 40px */
+  cursor: pointer;
+  padding: var(--spacing-1-5); /* 12px */
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-hover);
+}
+
+.sidebarToggle:hover {
+  color: var(--color-primary-500);
+  background-color: var(--color-neutral-50);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-primary-800);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2); /* 16px */
+}
+
+.logoText {
+  font-family: var(--font-family-primary);
+}
+
+.centerSection {
+  flex: 1;
+  justify-content: center;
+}
+
+.contextualNav {
+  font-size: var(--font-size-sm); /* 14px */
+  color: var(--color-neutral-500);
+}
+
+/* Responsive adjustments for breadcrumb */
+@media (max-width: 640px) {
+  .contextualNav {
+    display: none;
+  }
+}
+
+.rightSection {
+  gap: var(--spacing-6); /* 48px */
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2); /* 16px */
+  cursor: pointer;
+}
+
+.avatar {
+  width: var(--spacing-4); /* 32px */
+  height: var(--spacing-4); /* 32px */
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--color-neutral-200);
+  border: 2px solid var(--color-background-default);
+}
+
+.userName {
+  font-weight: 500;
+  font-size: var(--font-size-sm); /* 14px */
+  color: var(--color-neutral-800);
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-3); /* 24px */
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  font-size: var(--spacing-3); /* 24px */
+  cursor: pointer;
+  padding: var(--spacing-1-5); /* 12px */
+  color: var(--color-neutral-500);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconButton:hover {
+  color: var(--color-primary-500);
+  background-color: var(--color-neutral-100);
+}
+
+/* Active state for icon buttons */
+.iconButton:active {
+  background-color: var(--color-neutral-200);
+  transform: scale(0.95);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .header {
+    padding: 0 var(--spacing-4); /* 32px */
+  }
+
+  .leftSection {
+    gap: var(--spacing-2); /* 16px */
+  }
+
+  .sidebarToggle {
+    font-size: var(--spacing-4); /* 32px */
+    padding: var(--spacing-1); /* 8px */
+  }
+
+  .logo {
+    font-size: var(--spacing-5); /* 40px */
+  }
+
+  .rightSection {
+    gap: var(--spacing-3); /* 24px */
+  }
+
+  .iconButton {
+    font-size: var(--spacing-2-5); /* 20px */
+    padding: var(--spacing-1); /* 8px */
+  }
+}
+
+/* Active states for navigation */
+.contextualNav .active {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary-800);
+}
+
+/* User profile hover state */
+.userProfile:hover .userName {
+  text-decoration: underline;
+}
+
+/* Focus states for accessibility */
+.sidebarToggle:focus-visible,
+.iconButton:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}

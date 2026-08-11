@@ -1,0 +1,136 @@
+.chatMessages {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Message styling - using design tokens */
+.message {
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: var(--color-primary-500);
+  color: var(--color-background-default);
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-xs) var(--radius-lg);
+  padding: var(--spacing-3) var(--spacing-4);
+  margin: var(--spacing-2) 0;
+}
+
+.message.ai {
+  align-self: flex-start;
+  background-color: var(--color-background-default);
+  color: var(--color-neutral-800);
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) var(--radius-xs);
+  padding: var(--spacing-3) var(--spacing-4);
+  margin: var(--spacing-2) 0;
+  border: 1px solid var(--color-border-default);
+}
+
+/* Message header */
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-0-5);
+  font-size: var(--font-size-xs);
+  opacity: 0.8;
+}
+
+.senderName {
+  font-weight: var(--font-weight-semibold);
+}
+
+.timestamp {
+  font-size: var(--font-size-0-5);
+}
+
+/* Message content - improved for financial data */
+.messageContent {
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+/* Empty state styling */
+.emptyState {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.emptyStateIcon {
+  font-size: var(--font-size-7xl);
+  margin-bottom: var(--spacing-4);
+  opacity: 0.8;
+}
+
+.emptyStateTitle {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
+}
+
+.emptyStateDescription {
+  color: var(--color-neutral-500);
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+
+/* Financial data specific styling */
+.messageContent code {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-800);
+  padding: var(--spacing-0-5) var(--spacing-1);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-base);
+}
+
+.messageContent pre {
+  background-color: var(--color-neutral-100);
+  padding: var(--spacing-3);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+/* Focus states for accessibility */
+.message:focus-within {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Hover states for interactivity */
+.message:hover {
+  /* Subtle elevation on hover */
+  transform: translateY(var(--spacing-0-25));
+  transition: transform var(--transition-base);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .message {
+    max-width: 90%;
+  }
+
+  .message.user,
+  .message.ai {
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-md);
+  }
+
+  .messageHeader {
+    font-size: var(--font-size-0-5);
+  }
+
+  .emptyStateIcon {
+    font-size: var(--font-size-5xl);
+  }
+
+  .emptyStateTitle {
+    font-size: var(--font-size-xl);
+  }
+}

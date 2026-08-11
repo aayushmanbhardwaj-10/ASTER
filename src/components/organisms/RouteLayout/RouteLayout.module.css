@@ -1,0 +1,77 @@
+.routeLayout {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.routeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.routeTitleContainer {
+  flex: 1;
+  min-width: 200px;
+}
+
+.routeTitle {
+  margin: 0 0 4px 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #212529;
+  font-family: 'Inter', sans-serif;
+}
+
+.routeSubtitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6c757d;
+}
+
+.routeActions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.routeContent {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  padding: 0 24px;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .routeHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .routeTitleContainer {
+    min-width: unset;
+  }
+
+  .routeActions {
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .routeContent {
+    padding: 0 16px;
+  }
+}
+
+/* Ensure proper spacing */
+.routeLayout > *:last-child {
+  margin-bottom: 0;
+}

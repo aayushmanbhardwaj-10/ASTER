@@ -1,24 +1,24 @@
 .quickActions {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: var(--color-background-default);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-1);
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #003366;
-  margin-bottom: 20px;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-h);
+  margin-bottom: var(--spacing-5);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-2);
 }
 
 .actionsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(var(--spacing-25), 1fr));
+  gap: var(--spacing-4);
 }
 
 .actionCard {
@@ -26,29 +26,29 @@
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  background: #F8F9FA;
-  border-radius: 8px;
-  padding: 16px;
-  transition: all 0.2s ease;
+  background: var(--color-background-paper);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-4);
+  transition: var(--transition-hover);
   border: 1px solid transparent;
   height: 100%;
 }
 
 .actionCard:hover {
-  background: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 51, 102, 0.2);
+  background: var(--color-background-default);
+  transform: translateY(var(--spacing-0-5));
+  box-shadow: var(--shadow-2);
+  border-color: rgba(var(--color-primary-800), 0.2);
 }
 
 .actionIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-3);
   position: relative;
 }
 
@@ -58,20 +58,20 @@
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   opacity: 0.1;
 }
 
 .actionIcon span {
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
   position: relative;
   z-index: 1;
 }
 
 .actionIconPlaceholder {
-  width: 24px;
-  height: 24px;
-  background-color: #E9ECEF;
+  width: var(--spacing-3);
+  height: var(--spacing-3);
+  background-color: var(--color-neutral-200);
   border-radius: 50%;
 }
 
@@ -80,10 +80,10 @@
 }
 
 .actionTitle {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #212529;
-  margin-bottom: 8px;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-h);
+  margin-bottom: var(--spacing-2);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -91,16 +91,16 @@
 }
 
 .actionTitlePlaceholder {
-  height: 16px;
-  background-color: #E9ECEF;
-  border-radius: 4px;
-  margin-bottom: 4px;
+  height: var(--spacing-1-5);
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs);
+  margin-bottom: var(--spacing-1);
   width: 60%;
 }
 
 .actionDescription {
-  font-size: 0.875rem;
-  color: #6C757D;
+  font-size: var(--font-size-sm);
+  color: var(--text);
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -109,54 +109,54 @@
 }
 
 .actionDescriptionPlaceholder {
-  height: 12px;
-  background-color: #E9ECEF;
-  border-radius: 4px;
+  height: var(--spacing-1);
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs);
   width: 80%;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .sectionTitle {
-    font-size: 1.25rem;
-    margin-bottom: 16px;
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-4);
   }
 
   .actionsGrid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(var(--spacing-20), 1fr));
+    gap: var(--spacing-3);
   }
 
   .actionCard {
-    padding: 12px;
+    padding: var(--spacing-3);
   }
 
   .actionIcon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
+    width: var(--spacing-5);
+    height: var(--spacing-5);
+    margin-bottom: var(--spacing-2-5);
   }
 
   .actionIcon span {
-    font-size: 1.25rem;
+    font-size: var(--font-size-xl);
   }
 
   .actionTitle {
-    font-size: 0.9rem;
-    margin-bottom: 6px;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-1-5);
   }
 
   .actionTitlePlaceholder {
-    height: 14px;
+    height: var(--spacing-1);
     width: 50%;
   }
 
   .actionDescription {
-    font-size: 0.8rem;
+    font-size: var(--font-size-xs);
   }
 
   .actionDescriptionPlaceholder {
-    height: 10px;
+    height: var(--spacing-0-5);
     width: 70%;
   }
 }

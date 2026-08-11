@@ -1,0 +1,124 @@
+.notificationsPage {
+  min-height: 100vh;
+  background-color: var(--color-background-default);
+}
+
+.notificationsCard {
+  background: var(--color-background-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2);
+  padding: var(--spacing-8);
+  max-width: var(--spacing-75); /* 600px */
+  margin: 0 auto;
+}
+
+.notificationsSection {
+  margin-bottom: var(--spacing-6);
+}
+
+.notificationsSection:last-child {
+  margin-bottom: 0;
+}
+
+.notificationsSection h2 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-4);
+  color: var(--color-neutral-900);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.notificationItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-3);
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  transition: var(--transition-hover);
+}
+
+.notificationItem:hover {
+  border-color: var(--color-primary-500);
+  background-color: var(--color-background-hover);
+}
+
+.notificationItem input[type='checkbox'] {
+  margin-top: var(--spacing-0-5);
+  margin-right: var(--spacing-2);
+  width: var(--spacing-2-5);
+  height: var(--spacing-2-5);
+}
+
+.notificationLabel {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-700);
+  margin-bottom: var(--spacing-0-5);
+  display: block;
+}
+
+.notificationDescription {
+  color: var(--color-neutral-400);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.actions {
+  text-align: center;
+  margin-top: var(--spacing-6);
+}
+
+.saveButton {
+  width: 100%;
+  padding: var(--spacing-1-5) var(--spacing-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-hover);
+  background-color: var(--color-primary-500);
+  color: var(--color-background-default);
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: var(--color-primary-600);
+}
+
+.saveButton:disabled {
+  background-color: var(--color-neutral-300);
+  color: var(--color-neutral-500);
+  cursor: not-allowed;
+}
+
+.statusMessage {
+  margin-top: var(--spacing-4);
+  text-align: center;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.statusSuccess {
+  background-color: var(--color-semantic-positive-50);
+  color: var(--color-semantic-positive-800);
+}
+
+.statusError {
+  background-color: var(--color-semantic-negative-50);
+  color: var(--color-semantic-negative-800);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .notificationsCard {
+    padding: var(--spacing-6);
+    margin: 0 var(--spacing-3);
+  }
+
+  .notificationsSection h2 {
+    font-size: var(--font-size-lg);
+  }
+}

@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styles from './WidgetsContainer.module.css';
 import WidgetPlaceholder from './WidgetPlaceholder';
 
+interface Widget {
+  id: number;
+  title: string;
+  type: string;
+  size: 'small' | 'medium' | 'large';
+}
+
 const WidgetsContainer: React.FC = () => {
-  const [widgets, setWidgets] = useState([]);
+  const [widgets, setWidgets] = useState<Widget[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -12,13 +19,28 @@ const WidgetsContainer: React.FC = () => {
       try {
         await new Promise(resolve => setTimeout(resolve, 800));
         // Mock data
-        const mockWidgets = [
-          { id: 1, title: 'Market Overview', type: 'market-overview', size: 'medium' },
+        const mockWidgets: Widget[] = [
+          {
+            id: 1,
+            title: 'Market Overview',
+            type: 'market-overview',
+            size: 'medium',
+          },
           { id: 2, title: 'Watchlist', type: 'watchlist', size: 'medium' },
-          { id: 3, title: 'Performance Chart', type: 'performance', size: 'large' },
+          {
+            id: 3,
+            title: 'Performance Chart',
+            type: 'performance',
+            size: 'large',
+          },
           { id: 4, title: 'News Feed', type: 'news', size: 'small' },
           { id: 5, title: 'Alerts', type: 'alerts', size: 'small' },
-          { id: 6, title: 'Sector Performance', type: 'sector', size: 'medium' }
+          {
+            id: 6,
+            title: 'Sector Performance',
+            type: 'sector',
+            size: 'medium',
+          },
         ];
         setWidgets(mockWidgets);
         setLoading(false);
@@ -31,16 +53,32 @@ const WidgetsContainer: React.FC = () => {
     loadWidgets();
   }, []);
 
+  const handleWidgetUpdate = useCallback((updatedWidget: Widget) => {
+    setWidgets(prev =>
+      prev.map(w => (w.id === updatedWidget.id ? updatedWidget : w))
+    );
+  }, []);
+
+  const handleWidgetRemove = useCallback((widgetId: number) => {
+    setWidgets(prev => prev.filter(w => w.id !== widgetId));
+  }, []);
+
   if (loading) {
     return (
       <section className={styles.widgetsContainer}>
         <div className={styles.header}>
           <h2 className={styles.sectionTitle}>Dashboard Widgets</h2>
           <div className={styles.widgetControls}>
-            <button className={styles.addWidgetBtn} onClick={() => alert('Add widget functionality coming soon')}>
+            <button
+              className={styles.addWidgetBtn}
+              onClick={() => alert('Add widget functionality coming soon')}
+            >
               + Add Widget
             </button>
-            <button className={styles.layoutBtn} onClick={() => alert('Layout save functionality coming soon')}>
+            <button
+              className={styles.layoutBtn}
+              onClick={() => alert('Layout save functionality coming soon')}
+            >
               Save Layout
             </button>
           </div>
@@ -68,7 +106,10 @@ const WidgetsContainer: React.FC = () => {
             </div>
           ))}
           {/* Add widget placeholder */}
-          <div className={styles.addWidgetPlaceholder} onClick={() => alert('Click to add widget')}>
+          <div
+            className={styles.addWidgetPlaceholder}
+            onClick={() => alert('Click to add widget')}
+          >
             <div className={styles.addWidgetIcon}>+</div>
             <div className={styles.addWidgetText}>Add Widget</div>
           </div>
@@ -77,23 +118,21 @@ const WidgetsContainer: React.FC = () => {
     );
   }
 
-  const handleWidgetUpdate = (updatedWidget: any) => {
-    setWidgets(prev => prev.map(w => w.id === updatedWidget.id ? updatedWidget : w));
-  };
-
-  const handleWidgetRemove = (widgetId: number) => {
-    setWidgets(prev => prev.filter(w => w.id !== widgetId));
-  };
-
   return (
     <section className={styles.widgetsContainer}>
       <div className={styles.header}>
         <h2 className={styles.sectionTitle}>Dashboard Widgets</h2>
         <div className={styles.widgetControls}>
-          <button className={styles.addWidgetBtn} onClick={() => alert('Add widget functionality coming soon')}>
+          <button
+            className={styles.addWidgetBtn}
+            onClick={() => alert('Add widget functionality coming soon')}
+          >
             + Add Widget
           </button>
-          <button className={styles.layoutBtn} onClick={() => alert('Layout save functionality coming soon')}>
+          <button
+            className={styles.layoutBtn}
+            onClick={() => alert('Layout save functionality coming soon')}
+          >
             Save Layout
           </button>
         </div>
@@ -108,7 +147,10 @@ const WidgetsContainer: React.FC = () => {
           />
         ))}
         {/* Add widget placeholder */}
-        <div className={styles.addWidgetPlaceholder} onClick={() => alert('Click to add widget')}>
+        <div
+          className={styles.addWidgetPlaceholder}
+          onClick={() => alert('Click to add widget')}
+        >
           <div className={styles.addWidgetIcon}>+</div>
           <div className={styles.addWidgetText}>Add Widget</div>
         </div>

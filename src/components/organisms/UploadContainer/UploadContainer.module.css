@@ -1,0 +1,241 @@
+.uploadContainer {
+  background: var(--color-background-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: var(--spacing-6);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.header h1 {
+  color: var(--color-primary-800);
+  margin-bottom: var(--spacing-1);
+  font-size: var(--font-size-2xl);
+}
+
+.header p {
+  color: var(--color-neutral-500);
+  font-size: var(--font-size-base);
+}
+
+/* File list container */
+.fileList {
+  margin-top: var(--spacing-4);
+}
+
+/* Empty state for file list */
+.emptyState {
+  text-align: center;
+  padding: var(--spacing-6);
+}
+
+.emptyStateIcon {
+  font-size: var(--font-size-7xl);
+  margin-bottom: var(--spacing-4);
+  opacity: 0.5;
+}
+
+.emptyState p {
+  color: var(--color-neutral-500);
+  font-size: var(--font-size-base);
+}
+
+/* File item styling */
+.fileItem {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-3);
+  margin-bottom: var(--spacing-1);
+  border-radius: var(--radius-md);
+  transition: var(--transition-hover);
+  border: 1px solid transparent;
+}
+
+/* Status-based styling */
+.fileItem.uploading {
+  background-color: var(--color-neutral-50);
+  border-color: var(--color-primary-50);
+}
+
+.fileItem.success {
+  background-color: rgba(var(--color-semantic-positive-500), 0.05);
+  border-color: var(--color-semantic-positive-300);
+}
+
+.fileItem.error {
+  background-color: rgba(var(--color-semantic-negative-500), 0.05);
+  border-color: var(--color-semantic-negative-300);
+}
+
+/* File item hover state */
+.fileItem:hover {
+  background-color: var(--color-neutral-100);
+  transform: translateX(var(--spacing-1));
+}
+
+/* File info section */
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex: 1;
+}
+
+/* File preview */
+.filePreview {
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Icon container for non-previewable files */
+.iconContainer {
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* File details */
+.fileDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.fileName {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-800);
+  font-size: var(--font-size-base);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+}
+
+.fileSize {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+/* File actions */
+.fileActions {
+  display: flex;
+  gap: var(--spacing-1);
+  align-items: center;
+}
+
+/* Status indicators */
+.statusSuccess {
+  color: var(--color-semantic-positive-500);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-0-5);
+}
+
+.statusError {
+  color: var(--color-semantic-negative-500);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-0-5);
+}
+
+/* Buttons */
+.retryBtn,
+.deleteBtn {
+  background: none;
+  border: none;
+  padding: var(--spacing-1);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-hover);
+  color: var(--color-neutral-500);
+  font-size: var(--font-size-sm);
+}
+
+.retryBtn:hover {
+  color: var(--color-semantic-positive-500);
+  background-color: rgba(var(--color-semantic-positive-500), 0.1);
+}
+
+.deleteBtn:hover {
+  color: var(--color-semantic-negative-500);
+  background-color: rgba(var(--color-semantic-negative-500), 0.1);
+}
+
+.retryBtn:active,
+.deleteBtn:active {
+  transform: scale(0.95);
+}
+
+/* Focus states for accessibility */
+.retryBtn:focus-visible,
+.deleteBtn:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Progress bar container */
+.progressBar {
+  width: var(--spacing-20);
+  height: var(--spacing-1);
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  margin: var(--spacing-2) 0;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--color-primary-500);
+  transition: width var(--transition-base);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .uploadContainer {
+    padding: var(--spacing-4);
+  }
+
+  .header {
+    margin-bottom: var(--spacing-3);
+  }
+
+  .header h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  .fileItem {
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2);
+  }
+
+  .fileInfo {
+    flex-basis: 100%;
+  }
+
+  .fileActions {
+    margin-top: var(--spacing-2);
+  }
+
+  .progressBar {
+    width: 100%;
+  }
+}

@@ -1,0 +1,283 @@
+.textareaGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #212529;
+}
+
+.textareaWrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  /* Enhanced micro-interactions */
+  transition: transform 0.1s ease;
+}
+
+.textareaWrapper:focus-within {
+  transform: translateY(-1px);
+}
+
+.textarea {
+  box-sizing: border-box;
+  min-height: 44px; /* 3 rows approximated, but we let it grow */
+  padding: 0 12px 0 12px;
+  width: 100%;
+  border: 2px solid #ced4da;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #212529;
+  background-color: #ffffff;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.1s ease;
+  resize: vertical;
+  position: relative;
+  z-index: 0;
+}
+
+/* Textarea ripple effect */
+.textarea::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 123, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.textarea:focus::after {
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.1s ease;
+}
+
+/* Enhanced focus states */
+.textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Hover effect */
+.textarea:hover:not(:focus):not(.disabled) {
+  border-color: #adb5bd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Enhanced error states */
+.textarea.error {
+  border-color: #dc3545;
+}
+
+.textarea.error:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+}
+
+.textarea.error:hover:not(:focus):not(.disabled) {
+  border-color: #dc3545;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.15);
+}
+
+/* Enhanced success states */
+.textarea.success {
+  border-color: #28a745;
+}
+
+.textarea.success:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+}
+
+.textarea.success:hover:not(:focus):not(.disabled) {
+  border-color: #28a745;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.15);
+}
+
+/* Enhanced warning states */
+.textarea.warning {
+  border-color: #ffc107;
+}
+
+.textarea.warning:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.25);
+}
+
+.textarea.warning:hover:not(:focus):not(.disabled) {
+  border-color: #ffc107;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.15);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.textarea.error {
+  border-color: #dc3545;
+}
+
+.textarea.error:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+}
+
+.textarea.success {
+  border-color: #28a745;
+}
+
+.textarea.success:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+}
+
+.textarea.warning {
+  border-color: #ffc107;
+}
+
+.textarea.warning:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.25);
+}
+
+.textarea.disabled {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.textarea.disabled:hover,
+.textarea.disabled:focus {
+  border-color: initial;
+  box-shadow: initial;
+}
+
+.textareaIcon {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  color: #6c757d;
+}
+
+/* Spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Disabled state styling */
+.textarea.disabled {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.textarea.disabled:hover,
+.textarea.disabled:focus {
+  border-color: initial;
+  box-shadow: initial;
+}
+
+/* For right icon, we adjust the padding */
+.textareaWrapper .textarea {
+  padding-left: 36px; /* space for left icon */
+  padding-right: 36px; /* space for right icon */
+  padding-top: 12px; /* space for top icon */
+}
+
+/* If only left icon, adjust padding */
+.textareaWrapper:not(:has(.textareaIcon:last-child)) .textarea {
+  padding-right: 12px;
+}
+
+/* If only right icon, adjust padding */
+.textareaWrapper:not(:has(.textareaIcon:first-child)) .textarea {
+  padding-left: 12px;
+}
+
+/* Full width textarea group */
+.textareaGroup.fullWidth {
+  width: 100%;
+}
+
+.errorMessage {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #dc3545;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .textarea {
+    padding: 0 10px;
+    font-size: 0.875rem;
+    min-height: 38px;
+  }
+
+  .textareaGroup {
+    gap: 2px;
+  }
+
+  .label {
+    font-size: 0.75rem;
+  }
+
+  .textareaIcon {
+    width: 16px;
+    height: 16px;
+    left: 8px;
+    top: 8px;
+  }
+
+  /* Adjust padding for icons */
+  .textareaWrapper .textarea {
+    padding-left: 28px; /* space for left icon */
+    padding-right: 28px; /* space for right icon */
+    padding-top: 8px;
+  }
+
+  .textareaWrapper:not(:has(.textareaIcon:last-child)) .textarea {
+    padding-right: 8px;
+  }
+
+  .textareaWrapper:not(:has(.textareaIcon:first-child)) .textarea {
+    padding-left: 8px;
+  }
+}

@@ -1,0 +1,66 @@
+.typingIndicator {
+  padding: var(--spacing-1-5) var(--spacing-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.typingText {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.typingDots {
+  display: flex;
+  gap: var(--spacing-0-5);
+}
+
+.dot {
+  width: var(--spacing-0-5);
+  height: var(--spacing-0-5);
+  background-color: var(--color-neutral-500);
+  border-radius: 50%;
+  animation: typingDot var(--duration-base) infinite ease-in-out;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: calc(var(--duration-base) * 0.2);
+}
+
+.dot:nth-child(3) {
+  animation-delay: calc(var(--duration-base) * 0.4);
+}
+
+@keyframes typingDot {
+  0%,
+  60%,
+  100% {
+    transform: initial;
+  }
+  30% {
+    transform: scale(1.3);
+  }
+}
+
+/* Focus states for accessibility */
+.typingIndicator:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .typingIndicator {
+    padding: var(--spacing-1) var(--spacing-2-5);
+    font-size: var(--font-size-xs);
+  }
+
+  .dot {
+    width: var(--spacing-0-4);
+    height: var(--spacing-0-4);
+  }
+}

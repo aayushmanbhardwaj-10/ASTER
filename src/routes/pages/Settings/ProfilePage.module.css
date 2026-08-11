@@ -1,0 +1,281 @@
+.profilePage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+}
+
+.pageHeader h1 {
+  margin: 0;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+.pageDescription {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-500);
+}
+
+.profileCard {
+  background: var(--color-background-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-5);
+  padding: var(--spacing-6);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.avatarWrapper {
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 3px solid var(--color-background-default);
+  box-shadow: var(--shadow-xs);
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileInfo h2 {
+  margin: 0 0 var(--spacing-0-5) 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+}
+
+.userEmail {
+  margin: 0 0 var(--spacing-0-5) 0;
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-600);
+}
+
+.userRole {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-600);
+  font-weight: var(--font-weight-medium);
+}
+
+.profileDetails {
+  display: grid;
+  gap: var(--spacing-2);
+  padding: var(--spacing-6);
+}
+
+.detailItem {
+  display: flex;
+  gap: var(--spacing-3);
+}
+
+.detailLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-500);
+  min-width: var(--spacing-10);
+}
+
+.detailValue {
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-900);
+  font-weight: var(--font-weight-medium);
+}
+
+.editForm {
+  padding: var(--spacing-6);
+}
+
+.formGroup {
+  margin-bottom: var(--spacing-4);
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: var(--spacing-0-5);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-700);
+}
+
+.formInput {
+  width: 100%;
+  padding: var(--spacing-1-5) var(--spacing-2);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  background-color: var(--color-background-default);
+  color: var(--color-neutral-900);
+  transition: var(--transition-hover);
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: var(--shadow-inner);
+}
+
+.formInput::placeholder {
+  color: var(--color-neutral-400);
+}
+
+.formActions {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-4);
+}
+
+.cancelButton,
+.saveButton {
+  padding: var(--spacing-1-5) var(--spacing-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-hover);
+}
+
+.cancelButton {
+  background: none;
+  border: 1px solid var(--color-border-default);
+  color: var(--color-neutral-600);
+}
+
+.cancelButton:hover {
+  background-color: var(--color-neutral-100);
+  border-color: var(--color-neutral-300);
+}
+
+.saveButton {
+  background-color: var(--color-primary-500);
+  color: var(--color-background-default);
+}
+
+.saveButton:hover {
+  background-color: var(--color-primary-600);
+}
+
+.saveButton:disabled {
+  background-color: var(--color-neutral-300);
+  color: var(--color-neutral-500);
+  cursor: not-allowed;
+}
+
+.profileActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--spacing-4);
+}
+
+.editButton {
+  padding: var(--spacing-1-5) var(--spacing-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--color-border-default);
+  color: var(--color-neutral-700);
+  background: none;
+  cursor: pointer;
+  transition: var(--transition-hover);
+}
+
+.editButton:hover {
+  background-color: var(--color-neutral-50);
+  border-color: var(--color-neutral-300);
+  color: var(--color-neutral-900);
+}
+
+.editButton:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+.saveStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-top: var(--spacing-4);
+}
+
+.statusSuccess {
+  background-color: var(--color-semantic-positive-50);
+  color: var(--color-semantic-positive-800);
+}
+
+.statusError {
+  background-color: var(--color-semantic-negative-50);
+  color: var(--color-semantic-negative-800);
+}
+
+.statusSaving {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-800);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .profileHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-4);
+  }
+
+  .avatarWrapper {
+    width: var(--spacing-10);
+    height: var(--spacing-10);
+  }
+
+  .profileInfo h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  .detailItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .detailLabel {
+    min-width: auto;
+  }
+
+  .formActions,
+  .profileActions {
+    flex-direction: column;
+    gap: var(--spacing-2);
+    align-items: stretch;
+  }
+
+  .cancelButton,
+  .saveButton,
+  .editButton {
+    width: 100%;
+    text-align: center;
+  }
+}

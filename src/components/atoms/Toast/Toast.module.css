@@ -1,0 +1,195 @@
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1100;
+  max-width: 300px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation:
+    toastSlideIn 0.3s ease forwards,
+    toastFadeOut 0.3s ease 4.7s forwards;
+  /* Enhanced toast micro-interactions */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Enhanced hover effects */
+.toast:hover {
+  animation-play-state: paused;
+  transform: translateY(15px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* If we want to have the toast appear from the bottom and slide up */
+@keyframes toastSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toastFadeOut {
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Enhanced icon animation */
+.toastIcon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.toast:hover .toastIcon {
+  transform: rotate(15deg);
+}
+
+/* Enhanced close button */
+.toastClose {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.25rem;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.toastClose:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transform: rotate(90deg);
+}
+
+.toastClose:active {
+  transform: scale(0.9);
+}
+
+/* Type-specific enhancements */
+.info {
+  background-color: #17a2b8;
+}
+
+.success {
+  background-color: #28a745;
+}
+
+.warning {
+  background-color: #ffc107;
+  color: #212529; /* Dark text for warning */
+}
+
+.error {
+  background-color: #dc3545;
+}
+
+/* Enhanced type-specific hover effects */
+.info:hover {
+  background-color: #138496;
+}
+
+.success:hover {
+  background-color: #218838;
+}
+
+.warning:hover {
+  background-color: #e0a800;
+}
+
+.error:hover {
+  background-color: #c82333;
+}
+
+/* Message styles */
+.toastMessage {
+  flex: 1 1 auto;
+  /* Subtle text animation on hover */
+  transition: opacity 0.2s ease;
+}
+
+.toast:hover .toastMessage {
+  opacity: 0.9;
+}
+
+/* Type-specific background colors */
+.info {
+  background-color: #17a2b8;
+}
+
+.success {
+  background-color: #28a745;
+}
+
+.warning {
+  background-color: #ffc107;
+  color: #212529; /* Dark text for warning */
+}
+
+.error {
+  background-color: #dc3545;
+}
+
+/* Icon styles */
+.toastIcon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toastIconDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Message styles */
+.toastMessage {
+  flex: 1 1 auto;
+}
+
+/* Close button */
+.toastClose {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.25rem;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.toastClose:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
