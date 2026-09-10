@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASTER — Verified Financial Reasoning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151c;
+    --panel:#1a2029;
+    --panel-line:rgba(255,255,255,0.08);
+    --ink-soft:#8b93a1;
+    --paper:#e9e3d0;
+    --paper-ink:#2a2718;
+    --paper-line:rgba(42,39,24,0.14);
+    --brass:#b98c2e;
+    --brass-bright:#d4a63f;
+    --pine:#3c7259;
+    --rust:#a8432e;
+    --font-display:'Fraunces', Georgia, serif;
+    --font-mono:'IBM Plex Mono', 'Courier New', monospace;
+    --font-sans:'IBM Plex Sans', -apple-system, Segoe UI, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ink);color:var(--ink-soft);font-family:var(--font-sans);}
+  a{color:var(--brass-bright);}
+
+  .app{display:grid;grid-template-columns:340px 1fr;min-height:100vh;}
+  header.top{
+    grid-column:1 / -1;
+    padding:22px 40px 18px;
+    border-bottom:1px solid var(--panel-line);
+    display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  }
+  header.top h1{
+    font-family:var(--font-display);font-weight:600;font-size:28px;
+    color:#f2eede;margin:0;letter-spacing:0.5px;
+  }
+  header.top p{margin:0;font-size:14px;color:var(--ink-soft);font-style:italic;font-family:var(--font-display);}
+
+  /* ---------- control panel ---------- */
+  .control-panel{
+    background:var(--panel);padding:28px 24px 40px;
+    border-right:1px solid var(--panel-line);
+  }
+  .panel-label{
+    font-family:var(--font-display);font-style:italic;font-size:14px;
+    color:#cfd4dc;margin:0 0 12px;border-bottom:1px solid var(--panel-line);padding-bottom:8px;
+  }
+  .instrument-list{display:flex;flex-direction:column;gap:4px;margin-bottom:28px;}
+  .instrument-btn{
+    display:flex;align-items:center;gap:10px;text-align:left;
+    background:transparent;border:none;border-left:3px solid transparent;
+    color:var(--ink-soft);padding:9px 10px;border-radius:2px;cursor:pointer;
+    font-family:var(--font-sans);font-size:14px;
+  }
+  .instrument-btn:hover{background:rgba(255,255,255,0.04);color:#e7e3d6;}
+  .instrument-btn.active{border-left-color:var(--brass);background:rgba(185,140,46,0.1);color:#f2eede;}
+  .inst-symbol{
+    font-family:var(--font-mono);font-size:11px;color:var(--brass-bright);
+    width:44px;flex:none;
+  }
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:12.5px;margin-bottom:5px;color:var(--ink-soft);}
+  .field input{
+    width:100%;background:var(--ink);border:1px solid var(--panel-line);
+    color:#f2eede;padding:9px 10px;border-radius:3px;font-family:var(--font-mono);font-size:14px;
+  }
+  .field input:focus-visible{outline:2px solid var(--brass);outline-offset:1px;}
+  .currency-row{display:flex;align-items:center;gap:8px;margin-bottom:20px;}
+  .currency-row label{font-size:12.5px;color:var(--ink-soft);}
+  .currency-row input{
+    width:52px;background:var(--ink);border:1px solid var(--panel-line);color:#f2eede;
+    padding:6px 8px;border-radius:3px;font-family:var(--font-mono);text-align:center;
+  }
+  .calc-btn{
+    width:100%;background:var(--brass);border:none;color:#191408;font-weight:600;
+    padding:12px;border-radius:3px;cursor:pointer;font-family:var(--font-sans);font-size:14.5px;
+    margin-top:6px;
+  }
+  .calc-btn:hover{background:var(--brass-bright);}
+  .calc-btn:focus-visible{outline:2px solid #f2eede;outline-offset:2px;}
+
+  .ask-block{margin-top:32px;border-top:1px solid var(--panel-line);padding-top:22px;}
+  .ask-block textarea{
+    width:100%;min-height:64px;background:var(--ink);border:1px solid var(--panel-line);
+    color:#f2eede;padding:10px;border-radius:3px;font-family:var(--font-sans);font-size:13.5px;resize:vertical;
+  }
+  .ask-btn{
+    margin-top:8px;width:100%;background:transparent;border:1px solid var(--brass);
+    color:var(--brass-bright);padding:9px;border-radius:3px;cursor:pointer;font-size:13.5px;
+  }
+  .ask-btn:hover{background:rgba(185,140,46,0.12);}
+
+  .audit-block{margin-top:32px;border-top:1px solid var(--panel-line);padding-top:18px;}
+  .audit-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+  .audit-head button{background:none;border:none;color:var(--ink-soft);font-size:11.5px;cursor:pointer;text-decoration:underline;}
+  #auditLog{display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto;}
+  .audit-row{display:grid;grid-template-columns:52px 1fr auto;gap:8px;font-size:12px;color:var(--ink-soft);font-family:var(--font-mono);}
+  .audit-symbol{color:var(--brass-bright);}
+  .audit-time{color:#5c6472;}
+  .audit-empty{font-size:12.5px;color:#5c6472;font-style:italic;}
+
+  /* ---------- ledger / tape ---------- */
+  .ledger-panel{padding:44px 48px 60px;}
+  .tape{
+    position:relative;background:var(--paper);color:var(--paper-ink);
+    padding:34px 38px 30px;border-radius:1px;
+    box-shadow:0 18px 40px rgba(0,0,0,0.35);
+    max-width:680px;
+  }
+  .tape::before{
+    content:'';position:absolute;top:-9px;left:0;right:0;height:9px;
+    background-image:
+      linear-gradient(135deg, var(--ink) 50%, transparent 50%),
+      linear-gradient(45deg, var(--ink) 50%, transparent 50%);
+    background-size:16px 16px;background-position:0 0,0 0;background-repeat:repeat-x;
+  }
+  .tape-section{margin-bottom:20px;}
+  .tape-section h3{
+    font-family:var(--font-display);font-style:italic;font-weight:500;font-size:15px;
+    margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid var(--paper-line);color:#4a4630;
+  }
+  .tape-row{display:flex;justify-content:space-between;gap:12px;font-family:var(--font-mono);font-size:13.5px;padding:2px 0;}
+  .tape-formula{font-family:var(--font-mono);font-size:14.5px;padding:2px 0;}
+  .tape-step{font-family:var(--font-mono);font-size:13px;padding:3px 0;line-height:1.6;}
+  .tape-result-value{font-family:var(--font-mono);font-size:26px;font-weight:600;color:var(--pine);}
+  .verified-badge{
+    display:inline-block;margin-top:6px;font-size:11.5px;color:var(--pine);
+    border:1px solid var(--pine);padding:3px 8px;border-radius:2px;
+  }
+  .empty-tape{font-family:var(--font-sans);font-size:14.5px;line-height:1.7;color:#5b5741;}
+  .empty-tape.error{color:var(--rust);}
+
+  .interpretation{
+    max-width:680px;margin-top:26px;background:rgba(255,255,255,0.03);
+    border:1px solid var(--panel-line);border-radius:4px;padding:24px 28px;
+  }
+  .interpretation.hidden{display:none;}
+  .interp-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px;}
+  .interp-title{font-family:var(--font-display);font-style:italic;font-size:16px;color:#e7e3d6;margin:0;}
+  .level-group{display:flex;gap:6px;}
+  .level-btn{
+    background:transparent;border:1px solid var(--panel-line);color:var(--ink-soft);
+    padding:6px 12px;border-radius:14px;font-size:12.5px;cursor:pointer;
+  }
+  .level-btn:hover{border-color:var(--brass);color:#f2eede;}
+  .level-btn.active{background:var(--brass);border-color:var(--brass);color:#191408;}
+  #interpretationText{font-size:14.5px;line-height:1.75;color:#d9d5c8;}
+  #interpretationText p{margin:0 0 10px;}
+  .interp-placeholder,.interp-loading{color:var(--ink-soft);font-style:italic;}
+  .interp-error{color:var(--rust);}
+  .ai-badge{
+    display:inline-block;margin-top:8px;font-size:11.5px;color:var(--brass-bright);
+    border:1px solid var(--brass);padding:3px 8px;border-radius:2px;
+  }
+
+  @media (max-width:860px){
+    .app{grid-template-columns:1fr;}
+    .control-panel{border-right:none;border-bottom:1px solid var(--panel-line);}
+    .ledger-panel{padding:28px 20px 48px;}
+    header.top{padding:20px 20px 16px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <h1>ASTER</h1>
+    <p>verified financial reasoning — the math is deterministic, the prose is not</p>
+  </header>
+
+  <div class="control-panel">
+    <p class="panel-label">Instruments</p>
+    <div class="instrument-list" id="instrumentList"></div>
+
+    <div class="currency-row">
+      <label for="currencySymbol">Currency</label>
+      <input type="text" id="currencySymbol" value="₹" maxlength="3">
+    </div>
+
+    <div id="fieldsContainer"></div>
+    <button class="calc-btn" id="calcBtn">Calculate</button>
+
+    <div class="ask-block">
+      <p class="panel-label">Ask ASTER</p>
+      <textarea id="askInput" placeholder="e.g. What is WACC? or How does IRR differ from NPV?"></textarea>
+      <button class="ask-btn" id="askBtn">Ask</button>
+    </div>
+
+    <div class="audit-block">
+      <div class="audit-head">
+        <p class="panel-label" style="margin:0;border:none;padding:0;">Audit log</p>
+        <button id="clearAudit">clear</button>
+      </div>
+      <div id="auditLog"></div>
+    </div>
+  </div>
+
+  <div class="ledger-panel">
+    <div class="tape" id="tape">
+      <div id="tapeContent"></div>
+    </div>
+
+    <div class="interpretation hidden" id="interpretationPanel">
+      <div class="interp-head">
+        <p class="interp-title">Interpretation</p>
+        <div class="level-group">
+          <button class="level-btn" data-level="Beginner">Beginner</button>
+          <button class="level-btn" data-level="Professional">Professional</button>
+          <button class="level-btn" data-level="Analyst">Analyst</button>
+        </div>
+      </div>
+      <div id="interpretationText"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================= CONFIG ============================= */
+const INSTRUMENTS = {
+  fv: {
+    name:'Future Value', symbol:'FV',
+    fields:[
+      {id:'P', label:'Principal', type:'number', default:100000},
+      {id:'r', label:'Annual rate', type:'number', default:10, suffix:'%'},
+      {id:'n', label:'Compounding periods / year', type:'number', default:1},
+      {id:'t', label:'Years', type:'number', default:5}
+    ],
+    calc: calcFV
+  },
+  pv: {
+    name:'Present Value', symbol:'PV',
+    fields:[
+      {id:'FV', label:'Future value', type:'number', default:150000},
+      {id:'r', label:'Annual discount rate', type:'number', default:10, suffix:'%'},
+      {id:'t', label:'Years', type:'number', default:5}
+    ],
+    calc: calcPV
+  },
+  npv: {
+    name:'Net Present Value', symbol:'NPV',
+    fields:[
+      {id:'outlay', label:'Initial outlay', type:'number', default:500000},
+      {id:'r', label:'Discount rate', type:'number', default:12, suffix:'%'},
+      {id:'flows', label:'Cash flows, one per year (comma-separated)', type:'text', default:'150000,180000,200000,220000'}
+    ],
+    calc: calcNPV
+  },
+  irr: {
+    name:'Internal Rate of Return', symbol:'IRR',
+    fields:[
+      {id:'outlay', label:'Initial outlay', type:'number', default:500000},
+      {id:'flows', label:'Cash flows (comma-separated)', type:'text', default:'150000,180000,200000,220000'}
+    ],
+    calc: calcIRR
+  },
+  wacc: {
+    name:'Weighted Avg. Cost of Capital', symbol:'WACC',
+    fields:[
+      {id:'E', label:'Market value of equity', type:'number', default:8000000},
+      {id:'D', label:'Market value of debt', type:'number', default:2000000},
+      {id:'Re', label:'Cost of equity', type:'number', default:14, suffix:'%'},
+      {id:'Rd', label:'Cost of debt', type:'number', default:9, suffix:'%'},
+      {id:'T', label:'Tax rate', type:'number', default:25, suffix:'%'}
+    ],
+    calc: calcWACC
+  },
+  capm: {
+    name:'Cost of Equity (CAPM)', symbol:'CAPM',
+    fields:[
+      {id:'Rf', label:'Risk-free rate', type:'number', default:7, suffix:'%'},
+      {id:'Beta', label:'Beta', type:'number', default:1.2},
+      {id:'Rm', label:'Expected market return', type:'number', default:13, suffix:'%'}
+    ],
+    calc: calcCAPM
+  },
+  dcf: {
+    name:'Discounted Cash Flow', symbol:'DCF',
+    fields:[
+      {id:'flows', label:'Projected FCFs (comma-separated)', type:'text', default:'400000,460000,520000,590000,650000'},
+      {id:'r', label:'Discount rate (WACC)', type:'number', default:11, suffix:'%'},
+      {id:'g', label:'Terminal growth rate', type:'number', default:4, suffix:'%'}
+    ],
+    calc: calcDCF
+  }
+};
+
+const ROUTES = {
+  fv:['future value'], pv:['present value'],
+  npv:['npv','net present value'],
+  irr:['irr','internal rate of return'],
+  wacc:['wacc','weighted average cost of capital'],
+  capm:['capm','cost of equity','capital asset pricing'],
+  dcf:['dcf','discounted cash flow','terminal value','enterprise value']
+};
+
+/* ============================= STATE ============================= */
+let activeInstrument = 'fv';
+let currentResult = null;
+let currentMode = null;      // 'calc' | 'concept'
+let currentQuestion = null;
+
+/* ============================= HELPERS ============================= */
+function escapeHtml(str){
+  return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function formatCurrency(num){
+  const symbolEl = document.getElementById('currencySymbol');
+  const symbol = (symbolEl && symbolEl.value) ? symbolEl.value : '₹';
+  const sign = num < 0 ? '-' : '';
+  num = Math.abs(num);
+  const parts = num.toFixed(2).split('.');
+  let intPart = parts[0];
+  let lastThree = intPart.slice(-3);
+  let other = intPart.slice(0, -3);
+  if (other !== '') { lastThree = ',' + lastThree; other = other.replace(/\B(?=(\d{2})+(?!\d))/g, ','); }
+  return `${sign}${symbol}${other}${lastThree}.${parts[1]}`;
+}
+function parseFlows(str){
+  return String(str).split(',').map(s => parseFloat(s.trim())).filter(x => !isNaN(x));
+}
+
+/* ============================= CALCULATORS =============================
+   Every function here is pure, deterministic JavaScript. The language
+   model is never involved in producing a number — only in describing
+   one that has already been computed below. */
+
+function calcFV(v){
+  const P = parseFloat(v.P), rPct = parseFloat(v.r), n = parseFloat(v.n), t = parseFloat(v.t);
+  const r = rPct/100, ratePerPeriod = r/n, periods = n*t;
+  const growth = Math.pow(1+ratePerPeriod, periods);
+  const fv = P*growth;
+  return {
+    formula:'FV = P x (1 + r/n)^(n x t)',
+    steps:[
+      `r/n = ${rPct}% / ${n} = ${(ratePerPeriod*100).toFixed(4)}% per period`,
+      `n x t = ${n} x ${t} = ${periods} periods`,
+      `(1 + ${ratePerPeriod.toFixed(6)})^${periods} = ${growth.toFixed(6)}`,
+      `${formatCurrency(P)} x ${growth.toFixed(6)} = ${formatCurrency(fv)}`
+    ],
+    result: fv, resultLabel:'Future Value', resultDisplay: formatCurrency(fv)
+  };
+}
+
+function calcPV(v){
+  const FV = parseFloat(v.FV), rPct = parseFloat(v.r), t = parseFloat(v.t);
+  const r = rPct/100, denom = Math.pow(1+r, t);
+  const pv = FV/denom;
+  return {
+    formula:'PV = FV / (1 + r)^t',
+    steps:[
+      `(1 + ${r.toFixed(4)})^${t} = ${denom.toFixed(6)}`,
+      `${formatCurrency(FV)} / ${denom.toFixed(6)} = ${formatCurrency(pv)}`
+    ],
+    result: pv, resultLabel:'Present Value', resultDisplay: formatCurrency(pv)
+  };
+}
+
+function calcNPV(v){
+  const outlay = parseFloat(v.outlay), rPct = parseFloat(v.r), r = rPct/100;
+  const flows = parseFlows(v.flows);
+  let total = 0; const steps = [];
+  flows.forEach((cf,i)=>{
+    const t = i+1, disc = cf/Math.pow(1+r,t);
+    total += disc;
+    steps.push(`Year ${t}: ${formatCurrency(cf)} / (1+${r.toFixed(4)})^${t} = ${formatCurrency(disc)}`);
+  });
+  const npv = total - outlay;
+  steps.push(`Sum of discounted flows = ${formatCurrency(total)}`);
+  steps.push(`NPV = ${formatCurrency(total)} - ${formatCurrency(outlay)} = ${formatCurrency(npv)}`);
+  return {
+    formula:'NPV = sum[ CFt / (1+r)^t ] - Initial Outlay',
+    steps, result: npv, resultLabel:'Net Present Value', resultDisplay: formatCurrency(npv)
+  };
+}
+
+function npvAtRate(rate, outlay, flows){
+  let total = 0;
+  flows.forEach((cf,i)=>{ total += cf/Math.pow(1+rate, i+1); });
+  return total - outlay;
+}
+
+function calcIRR(v){
+  const outlay = parseFloat(v.outlay);
+  const flows = parseFlows(v.flows);
+  let lo = -0.9999, hi = 5;
+  let fLo = npvAtRate(lo, outlay, flows), fHi = npvAtRate(hi, outlay, flows);
+  const steps = [];
+  if (fLo*fHi > 0){
+    steps.push('No sign change in NPV between -99.99% and 500% -- IRR may not exist in this range, or the cash flows may produce multiple IRRs.');
+    return { formula:'IRR: rate r where sum[ CFt / (1+r)^t ] - Outlay = 0', steps, result:null, resultLabel:'Internal Rate of Return', resultDisplay:'Undefined in range' };
+  }
+  let mid = 0, fMid;
+  for (let i=0; i<60; i++){
+    mid = (lo+hi)/2;
+    fMid = npvAtRate(mid, outlay, flows);
+    if (i < 3){ steps.push(`Iteration ${i+1}: r = ${(mid*100).toFixed(4)}% -> NPV = ${formatCurrency(fMid)}`); }
+    else if (i === 3){ steps.push('... bisection continues, halving the interval each pass ...'); }
+    else if (i > 56){ steps.push(`Iteration ${i+1}: r = ${(mid*100).toFixed(4)}% -> NPV = ${formatCurrency(fMid)}`); }
+    if (fMid === 0) break;
+    if (fLo*fMid < 0){ hi = mid; fHi = fMid; } else { lo = mid; fLo = fMid; }
+  }
+  steps.push(`Converged: IRR ~ ${(mid*100).toFixed(3)}%`);
+  return { formula:'IRR: rate r where sum[ CFt / (1+r)^t ] - Outlay = 0 (solved by bisection)', steps, result: mid*100, resultLabel:'Internal Rate of Return', resultDisplay:(mid*100).toFixed(3)+'%' };
+}
+
+function calcWACC(v){
+  const E = parseFloat(v.E), D = parseFloat(v.D);
+  const Re = parseFloat(v.Re)/100, Rd = parseFloat(v.Rd)/100, T = parseFloat(v.T)/100;
+  const Vt = E+D, we = E/Vt, wd = D/Vt, afterTaxRd = Rd*(1-T);
+  const wacc = we*Re + wd*afterTaxRd;
+  return {
+    formula:'WACC = (E/V) x Re + (D/V) x Rd x (1 - T)',
+    steps:[
+      `V = E + D = ${formatCurrency(E)} + ${formatCurrency(D)} = ${formatCurrency(Vt)}`,
+      `E/V = ${(we*100).toFixed(2)}%,  D/V = ${(wd*100).toFixed(2)}%`,
+      `After-tax cost of debt = Rd x (1-T) = ${(Rd*100).toFixed(2)}% x (1-${(T*100).toFixed(2)}%) = ${(afterTaxRd*100).toFixed(3)}%`,
+      `WACC = (${(we*100).toFixed(2)}% x ${(Re*100).toFixed(2)}%) + (${(wd*100).toFixed(2)}% x ${(afterTaxRd*100).toFixed(3)}%) = ${(wacc*100).toFixed(3)}%`
+    ],
+    result: wacc*100, resultLabel:'WACC', resultDisplay:(wacc*100).toFixed(3)+'%'
+  };
+}
+
+function calcCAPM(v){
+  const Rf = parseFloat(v.Rf)/100, Beta = parseFloat(v.Beta), Rm = parseFloat(v.Rm)/100;
+  const premium = Rm-Rf, re = Rf + Beta*premium;
+  return {
+    formula:'Re = Rf + Beta x (Rm - Rf)',
+    steps:[
+      `Market risk premium = Rm - Rf = ${(Rm*100).toFixed(2)}% - ${(Rf*100).toFixed(2)}% = ${(premium*100).toFixed(2)}%`,
+      `Beta x premium = ${Beta} x ${(premium*100).toFixed(2)}% = ${(Beta*premium*100).toFixed(3)}%`,
+      `Re = ${(Rf*100).toFixed(2)}% + ${(Beta*premium*100).toFixed(3)}% = ${(re*100).toFixed(3)}%`
+    ],
+    result: re*100, resultLabel:'Cost of Equity', resultDisplay:(re*100).toFixed(3)+'%'
+  };
+}
+
+function calcDCF(v){
+  const flows = parseFlows(v.flows);
+  const r = parseFloat(v.r)/100, g = parseFloat(v.g)/100;
+  if (g >= r){
+    return { formula:'EV = sum[ PV(FCFt) ] + PV(Terminal Value)', steps:['Terminal growth rate must be less than the discount rate (g < r) -- the terminal value formula is undefined otherwise.'], result:null, resultLabel:'Enterprise Value', resultDisplay:'Undefined (g >= r)' };
+  }
+  let sumPV = 0; const steps = [];
+  flows.forEach((cf,i)=>{
+    const t = i+1, pv = cf/Math.pow(1+r,t);
+    sumPV += pv;
+    steps.push(`Year ${t}: ${formatCurrency(cf)} / (1+${r.toFixed(4)})^${t} = ${formatCurrency(pv)}`);
+  });
+  const lastFCF = flows[flows.length-1], n = flows.length;
+  const tv = lastFCF*(1+g)/(r-g);
+  const pvTV = tv/Math.pow(1+r,n);
+  steps.push(`Terminal Value = FCF_last x (1+g) / (r-g) = ${formatCurrency(lastFCF)} x ${(1+g).toFixed(4)} / ${(r-g).toFixed(4)} = ${formatCurrency(tv)}`);
+  steps.push(`PV of Terminal Value = ${formatCurrency(tv)} / (1+${r.toFixed(4)})^${n} = ${formatCurrency(pvTV)}`);
+  const ev = sumPV+pvTV;
+  steps.push(`Enterprise Value = ${formatCurrency(sumPV)} + ${formatCurrency(pvTV)} = ${formatCurrency(ev)}`);
+  return { formula:'EV = sum[ PV(FCFt) ] + PV(Terminal Value), TV = FCF_last x (1+g)/(r-g)', steps, result: ev, resultLabel:'Enterprise Value', resultDisplay: formatCurrency(ev) };
+}
+
+/* ============================= RENDER ============================= */
+function renderInstrumentList(){
+  const el = document.getElementById('instrumentList');
+  el.innerHTML = '';
+  Object.entries(INSTRUMENTS).forEach(([key, inst])=>{
+    const btn = document.createElement('button');
+    btn.className = 'instrument-btn' + (key === activeInstrument ? ' active' : '');
+    btn.setAttribute('aria-pressed', key === activeInstrument);
+    btn.innerHTML = `<span class="inst-symbol">${inst.symbol}</span><span class="inst-name">${inst.name}</span>`;
+    btn.addEventListener('click', ()=>{
+      activeInstrument = key; currentResult = null;
+      renderInstrumentList(); renderFields(); renderLedgerEmpty();
+    });
+    el.appendChild(btn);
+  });
+}
+
+function renderFields(){
+  const inst = INSTRUMENTS[activeInstrument];
+  const el = document.getElementById('fieldsContainer');
+  el.innerHTML = '';
+  inst.fields.forEach(f=>{
+    const wrap = document.createElement('div');
+    wrap.className = 'field';
+    const label = document.createElement('label');
+    label.textContent = f.label + (f.suffix ? ` (${f.suffix})` : '');
+    label.setAttribute('for', 'field-'+f.id);
+    const input = document.createElement('input');
+    input.type = f.type === 'text' ? 'text' : 'number';
+    input.id = 'field-'+f.id;
+    input.value = f.default;
+    if (f.type !== 'text') input.step = 'any';
+    input.addEventListener('keydown', e=>{ if (e.key === 'Enter') calculate(); });
+    wrap.appendChild(label); wrap.appendChild(input);
+    el.appendChild(wrap);
+  });
+}
+
+function gatherValues(){
+  const inst = INSTRUMENTS[activeInstrument];
+  const values = {};
+  inst.fields.forEach(f=>{ values[f.id] = document.getElementById('field-'+f.id).value; });
+  return values;
+}
+
+function renderLedgerEmpty(){
+  document.getElementById('tapeContent').innerHTML =
+    `<p class="empty-tape">No calculation yet. Fill in the instrument on the left and press <strong>Calculate</strong> — every step prints here, computed independently of the language model.</p>`;
+  document.getElementById('interpretationPanel').classList.add('hidden');
+}
+
+function renderTape(inst, values, result){
+  const inputsHtml = inst.fields.map(f=>
+    `<div class="tape-row"><span>${escapeHtml(f.label)}</span><span>${escapeHtml(values[f.id])}${f.suffix ? f.suffix : ''}</span></div>`
+  ).join('');
+  const stepsHtml = result.steps.map(s => `<div class="tape-step">${escapeHtml(s)}</div>`).join('');
+  document.getElementById('tapeContent').innerHTML = `
+    <div class="tape-section"><h3>Inputs</h3>${inputsHtml}</div>
+    <div class="tape-section"><h3>Formula</h3><div class="tape-formula">${escapeHtml(result.formula)}</div></div>
+    <div class="tape-section"><h3>Calculation</h3>${stepsHtml}</div>
+    <div class="tape-section tape-result"><h3>${escapeHtml(result.resultLabel)}</h3><div class="tape-result-value">${escapeHtml(result.resultDisplay)}</div></div>
+    <div class="verified-badge">✓ deterministic — computed in JavaScript, not by the model</div>
+  `;
+}
+
+function showInterpretationPrompt(){
+  const panel = document.getElementById('interpretationPanel');
+  panel.classList.remove('hidden');
+  document.getElementById('interpretationText').innerHTML =
+    `<p class="interp-placeholder">Choose a register and ASTER will explain the result above in prose. The numbers won't change — only how they're described.</p>`;
+  document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+}
+
+function renderAuditLog(entries){
+  const el = document.getElementById('auditLog');
+  if (!entries || entries.length === 0){
+    el.innerHTML = `<p class="audit-empty">No entries yet — calculations save here automatically.</p>`;
+    return;
+  }
+  el.innerHTML = entries.map(e=>{
+    const d = new Date(e.ts);
+    const time = d.toLocaleString(undefined, {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'});
+    return `<div class="audit-row"><span class="audit-symbol">${escapeHtml(e.symbol)}</span><span class="audit-result">${escapeHtml(e.resultDisplay)}</span><span class="audit-time">${time}</span></div>`;
+  }).join('');
+}
+
+/* ============================= ACTIONS ============================= */
+function calculate(){
+  const inst = INSTRUMENTS[activeInstrument];
+  const values = gatherValues();
+  let result;
+  try{
+    result = inst.calc(values);
+  }catch(e){
+    document.getElementById('tapeContent').innerHTML = `<p class="empty-tape error">Could not complete the calculation — check your inputs. (${escapeHtml(e.message)})</p>`;
+    document.getElementById('interpretationPanel').classList.add('hidden');
+    return;
+  }
+  currentResult = result; currentMode = 'calc';
+  renderTape(inst, values, result);
+  showInterpretationPrompt();
+  if (result.result !== null && result.result !== undefined && !Number.isNaN(result.result)){
+    saveToAuditLog({ ts: Date.now(), symbol: inst.symbol, resultDisplay: result.resultDisplay });
+  }
+}
+
+function routeQuestion(q){
+  const lower = q.toLowerCase();
+  for (const [key, kws] of Object.entries(ROUTES)){
+    if (kws.some(k => lower.includes(k))) return key;
+  }
+  return null;
+}
+
+function handleAsk(){
+  const q = document.getElementById('askInput').value.trim();
+  if (!q) return;
+  const routed = routeQuestion(q);
+  if (routed){
+    activeInstrument = routed; currentResult = null;
+    renderInstrumentList(); renderFields();
+    document.getElementById('tapeContent').innerHTML =
+      `<p class="empty-tape">Routed “${escapeHtml(q)}” to the <strong>${escapeHtml(INSTRUMENTS[routed].name)}</strong> instrument. Fill in the inputs and press Calculate.</p>`;
+    document.getElementById('interpretationPanel').classList.add('hidden');
+  } else {
+    currentMode = 'concept'; currentQuestion = q; currentResult = null;
+    document.getElementById('tapeContent').innerHTML =
+      `<p class="empty-tape">“${escapeHtml(q)}” reads as a concept question, not a calculation — no instrument matched. Choose a register on the right for a grounded explanation.</p>`;
+    showInterpretationPrompt();
+  }
+}
+
+async function callClaude(system, userText){
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      model:'claude-sonnet-4-6',
+      max_tokens:1000,
+      system: system,
+      messages:[{role:'user', content:userText}]
+    })
+  });
+  if (!response.ok) throw new Error('API request failed (' + response.status + ')');
+  const data = await response.json();
+  const text = (data.content || []).map(b => b.text || '').join('\n').trim();
+  if (!text) throw new Error('empty response');
+  return text;
+}
+
+async function runInterpretation(level){
+  const textEl = document.getElementById('interpretationText');
+  textEl.innerHTML = `<p class="interp-loading">Printing ${escapeHtml(level)} interpretation…</p>`;
+  try{
+    let text;
+    if (currentMode === 'calc' && currentResult){
+      const system = `You are ASTER's explanation layer, a financial reasoning assistant. You are given a VERIFIED calculation that has already been computed deterministically outside of you — never recompute, alter, or contradict the numbers given. Your only job is to explain what the result means, in language suited to a ${level} audience. Beginner: plain everyday language, at most one simple analogy, no jargon. Professional: standard finance terminology, concise, focused on practical implication. Analyst: precise technical register, note relevant sensitivities or assumptions worth flagging, assume an expert reader. Write 3-5 sentences. Do not introduce any number that isn't given below.`;
+      const userMsg = `Formula: ${currentResult.formula}\nSteps:\n${currentResult.steps.join('\n')}\nResult: ${currentResult.resultLabel} = ${currentResult.resultDisplay}\n\nExplain this result.`;
+      text = await callClaude(system, userMsg);
+    } else if (currentMode === 'concept' && currentQuestion){
+      const system = `You are ASTER's financial knowledge layer. Answer ONLY the conceptual finance question asked, accurately and grounded, in a register suited to a ${level} audience (Beginner: plain language, one analogy; Professional: standard terminology, practical framing; Analyst: precise technical register). Do not perform or invent any specific numeric calculation — if the question requires one, name which ASTER instrument the user should use instead (Future Value, Present Value, NPV, IRR, WACC, CAPM, or DCF) and stop there. Write 4-6 sentences.`;
+      text = await callClaude(system, currentQuestion);
+    } else {
+      throw new Error('nothing to explain yet');
+    }
+    textEl.innerHTML = `<p>${escapeHtml(text).replace(/\n+/g,'</p><p>')}</p><div class="ai-badge">AI-generated interpretation — cross-check against the verified figures above</div>`;
+  }catch(e){
+    textEl.innerHTML = `<p class="interp-error">Interpretation unavailable right now (${escapeHtml(e.message)}). The verified numbers above were computed independently and are unaffected.</p>`;
+  }
+}
+
+/* ---------- persistent audit log (window.storage) ---------- */
+async function loadAuditLog(){
+  try{
+    const listRes = await window.storage.list('calc:', false);
+    if (!listRes || !listRes.keys || listRes.keys.length === 0){ renderAuditLog([]); return; }
+    const entries = [];
+    for (const key of listRes.keys){
+      try{
+        const r = await window.storage.get(key, false);
+        if (r && r.value) entries.push(JSON.parse(r.value));
+      }catch(e){ /* skip unreadable entry */ }
+    }
+    entries.sort((a,b)=> b.ts - a.ts);
+    renderAuditLog(entries.slice(0,20));
+  }catch(e){
+    renderAuditLog([]);
+  }
+}
+async function saveToAuditLog(entry){
+  try{
+    await window.storage.set('calc:' + entry.ts, JSON.stringify(entry), false);
+    loadAuditLog();
+  }catch(e){ console.error('audit log save failed', e); }
+}
+async function clearAuditLog(){
+  try{
+    const listRes = await window.storage.list('calc:', false);
+    if (listRes && listRes.keys){
+      for (const key of listRes.keys){ await window.storage.delete(key, false); }
+    }
+    loadAuditLog();
+  }catch(e){ console.error('audit log clear failed', e); }
+}
+
+/* ============================= INIT ============================= */
+document.getElementById('calcBtn').addEventListener('click', calculate);
+document.getElementById('askBtn').addEventListener('click', handleAsk);
+document.getElementById('askInput').addEventListener('keydown', e=>{
+  if (e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); handleAsk(); }
+});
+document.getElementById('clearAudit').addEventListener('click', clearAuditLog);
+document.querySelectorAll('.level-btn').forEach(btn=>{
+  btn.addEventListener('click', async ()=>{
+    document.querySelectorAll('.level-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    await runInterpretation(btn.dataset.level);
+  });
+});
+
+renderInstrumentList();
+renderFields();
+renderLedgerEmpty();
+loadAuditLog();
+</script>
+</body>
+</html>
