@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "name": "aster-ai-financial-platform",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
